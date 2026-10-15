@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="activity-build" content="kk-sim-activity-singlefile-2026-10-16-r37">
+  <meta name="activity-build" content="kk-sim-activity-singlefile-2026-10-16-r38">
   <title>キネティックキック 戦術・編成シミュレーター（Activity対応版）</title>
   <style>
     :root {
@@ -571,8 +571,8 @@
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* Share / Sync Box for Discord Activity & iframe */
-    .share-sync-box {
+    /* Team share box for Discord Activity & iframe */
+    .team-share-box {
       background: rgba(56, 189, 248, 0.06);
       border: 1px dashed var(--accent);
       border-radius: 10px;
@@ -605,52 +605,6 @@
       font-size: 0.78rem;
       font-family: monospace;
     }
-
-    /* Firebase realtime sync settings stay inside the single HTML file. */
-    .realtime-sync-panel {
-      flex: 1 1 100%;
-      min-width: 0;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      background: rgba(15, 23, 42, 0.72);
-    }
-    .realtime-sync-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 0.82rem;
-      font-weight: 800;
-    }
-    #realtime-sync-status {
-      display: inline-block;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 3px 9px;
-      color: var(--text-sub);
-      font-size: 0.72rem;
-      font-weight: 700;
-      overflow-wrap: anywhere;
-    }
-    #realtime-sync-status[data-state="connected"] { color: #a7f3d0; border-color: #10b981; }
-    #realtime-sync-status[data-state="connecting"] { color: #fde68a; border-color: #f59e0b; }
-    #realtime-sync-status[data-state="error"] { color: #fecaca; border-color: #ef4444; }
-    #realtime-sync-config { margin-top: 10px; }
-    #realtime-sync-config > summary { cursor: pointer; color: var(--accent); font-size: 0.78rem; font-weight: 800; }
-    .realtime-sync-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .realtime-sync-field { min-width: 0; }
-    .realtime-sync-field label { display: block; margin-bottom: 4px; color: var(--text-sub); font-size: 0.74rem; font-weight: 700; }
-    .realtime-sync-field input { display: block; width: 100%; min-width: 0; background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); border-radius: 6px; padding: 8px; font: inherit; font-size: 0.78rem; }
-    .realtime-sync-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .realtime-sync-note { margin-top: 8px; color: var(--text-sub); font-size: 0.72rem; line-height: 1.5; overflow-wrap: anywhere; }
-    #realtime-sync-status-text { margin-top: 6px; color: var(--text-sub); font-size: 0.75rem; overflow-wrap: anywhere; }
 
     /* Member Cards (High-Contrast Checked State) */
     .member-grid {
@@ -1266,11 +1220,11 @@
         min-width: 0;
         max-width: 100%;
       }
-      .share-sync-box > * {
+      .team-share-box > * {
         min-width: 0;
         max-width: 100%;
       }
-      .share-sync-box button,
+      .team-share-box button,
       .preset-group button {
         white-space: normal;
         overflow-wrap: anywhere;
@@ -1763,10 +1717,10 @@
         </div>
       </div>
 
-      <!-- Discord / iframe Team Share & Sync Bar -->
-      <div class="share-sync-box">
+      <!-- Discord / iframe Team Share Bar -->
+      <div class="team-share-box">
         <div style="font-size:0.8rem; color:var(--text-sub);">
-          <strong style="color:var(--accent);">💬 Discord・メンバー間同期：</strong>振り分け結果をテキストでコピーしたり、他の人が作ったチーム結果を読み込めます。
+          <strong style="color:var(--accent);">💬 Discord・メンバー間共有：</strong>振り分け結果をテキストでコピーしたり、他の人が作ったチーム結果を読み込めます。
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button type="button" class="preset-btn" style="border-color:var(--accent); color:var(--accent);" data-action="copyTeamShareText()">📋 チーム分け結果をコピー</button>
@@ -1779,38 +1733,7 @@
             <button type="button" class="preset-btn" data-action="toggleImportShareBox(false)">閉じる</button>
           </div>
         </div>
-        <section class="realtime-sync-panel" id="realtime-sync-panel" aria-labelledby="realtime-sync-title">
-          <div class="realtime-sync-heading">
-            <strong id="realtime-sync-title" style="color:var(--accent);">⚡ チーム分けのリアルタイム自動同期</strong>
-            <span id="realtime-sync-status" role="status" aria-live="polite" data-state="disabled">未設定</span>
-          </div>
-          <p id="realtime-sync-status-text">Firebase Realtime Databaseを設定すると、振り分け結果を同じルームの参加者へ自動配信します。設定しない場合は従来のコピー／読み込み機能だけが動作します。</p>
-          <details id="realtime-sync-config">
-            <summary>リアルタイム同期の接続設定</summary>
-            <div class="realtime-sync-grid">
-              <div class="realtime-sync-field">
-                <label for="realtime-db-url">Firebase Realtime Database URL</label>
-                <input id="realtime-db-url" type="url" inputmode="url" autocomplete="url" placeholder="https://プロジェクト-default-rtdb.firebaseio.com">
-              </div>
-              <div class="realtime-sync-field">
-                <label for="realtime-api-key">Firebase Web API Key（公開用）</label>
-                <input id="realtime-api-key" type="text" autocomplete="off" spellcheck="false" placeholder="FirebaseプロジェクトのWeb API Key">
-              </div>
-              <div class="realtime-sync-field">
-                <label for="realtime-room-code">共通ルームコード（24〜64文字）</label>
-                <input id="realtime-room-code" type="text" autocomplete="off" spellcheck="false" minlength="24" maxlength="64" pattern="[A-Za-z0-9_-]{24,64}" placeholder="新規ルームコードを生成してください">
-              </div>
-            </div>
-            <div class="realtime-sync-actions">
-              <button type="button" class="preset-btn" data-action="generateRealtimeRoomCode()">🔑 新規ルームコード</button>
-              <button type="button" class="add-btn" data-action="connectRealtimeSync()">接続・設定保存</button>
-              <button type="button" class="preset-btn" data-action="disconnectRealtimeSync()">切断</button>
-              <button type="button" class="preset-btn" data-action="copyRealtimeInviteLink()">招待リンクをコピー</button>
-            </div>
-            <textarea id="realtime-invite-fallback" class="share-textarea" aria-label="リアルタイム同期の招待リンク" placeholder="コピーできない場合はこのリンクを手動コピーしてください" readonly hidden></textarea>
-            <p class="realtime-sync-note">セットアップが必要です：FirebaseでRealtime Databaseを作成し、AuthenticationのAnonymousログインを有効化し、監査レポートにあるルーム限定のセキュリティルールを設定してください。サービスアカウントの秘密鍵は絶対に入力しないでください。招待リンクを持つ人はそのルームのチーム結果を変更できます。</p>
-          </details>
-        </section>
+
       </div>
 
       <div id="member-grid" class="member-grid"></div>
@@ -1947,7 +1870,7 @@
   </div>
 </div>
 
-<script id="activity-app-r37">
+<script id="activity-app-r38">
 /* Single-file Activity build. All application logic is embedded below. */
 // --- IFRAME & DISCORD ACTIVITY COMPATIBILITY LAYER (r36) ---
   const MAX_VISIBLE_TOASTS = 4;
@@ -2026,10 +1949,6 @@
     ['copyTeamShareText', copyTeamShareText],
     ['applySharedTeamText', applySharedTeamText],
     ['toggleImportShareBox', toggleImportShareBox],
-    ['connectRealtimeSync', connectRealtimeSync],
-    ['disconnectRealtimeSync', disconnectRealtimeSync],
-    ['generateRealtimeRoomCode', generateRealtimeRoomCode],
-    ['copyRealtimeInviteLink', copyRealtimeInviteLink]
   ]);
 
   function parseActionArguments(source, element) {
@@ -2133,7 +2052,7 @@
     // copy handler synchronously in the trusted click event; it does not replace its
     // source control. All other actions are deferred until native activation and event
     // propagation have finished, avoiding checkbox/DOM replacement races.
-    if (attributeName === 'data-action' && /^(?:copyTeamShareText|copyRealtimeInviteLink)\s*\(/.test(expression)) {
+    if (attributeName === 'data-action' && /^copyTeamShareText\s*\(/.test(expression)) {
       invoke();
       return;
     }
@@ -2433,670 +2352,6 @@
 
   let MEMBERS = [...BASE_MEMBERS];
 
-  // Optional cross-device synchronization. All communication uses native fetch and
-  // EventSource; the page remains one HTML file and does not load an external SDK.
-  const REALTIME_SYNC_SETTINGS_KEY = 'kinetic_kick_realtime_sync_settings_v1';
-  const REALTIME_SYNC_AUTH_KEY_PREFIX = 'kinetic_kick_firebase_refresh_v1:';
-  const REALTIME_SYNC_SCHEMA = 2;
-  const REALTIME_SYNC_MAX_WRITE_ATTEMPTS = 5;
-  const REALTIME_SYNC_MAX_MEMBERS = BASE_MEMBERS.length + INPUT_LIMITS.customMembers;
-  let realtimeSync = {
-    config: null,
-    source: null,
-    clientId: makeRandomHex(16),
-    idToken: '',
-    refreshToken: '',
-    tokenExpiresAt: 0,
-    tokenTimer: 0,
-    reconnecting: false,
-    connected: false,
-    streaming: false,
-    connecting: false,
-    applyingRemote: false,
-    lastRevision: 0,
-    lastState: null,
-    publishSequence: 0,
-    autoConnectAttempted: false
-  };
-
-  function makeRandomHex(byteCount = 16) {
-    const bytes = new Uint8Array(Math.max(1, Math.min(32, byteCount)));
-    if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
-      window.crypto.getRandomValues(bytes);
-    } else {
-      for (let i = 0; i < bytes.length; i++) bytes[i] = Math.floor(Math.random() * 256);
-    }
-    return [...bytes].map(value => value.toString(16).padStart(2, '0')).join('');
-  }
-
-  function updateRealtimeSyncStatus(message, state = 'disabled') {
-    const badge = document.getElementById('realtime-sync-status');
-    const text = document.getElementById('realtime-sync-status-text');
-    if (badge) {
-      badge.dataset.state = state;
-      badge.textContent = state === 'connected' ? '接続中' : state === 'connecting' ? '接続処理中' : state === 'error' ? 'エラー' : state === 'disconnected' ? '切断' : '未設定';
-    }
-    if (text) text.textContent = String(message || '');
-    document.documentElement.dataset.realtimeSyncState = state;
-  }
-
-  function validRealtimeRoomCode(value) {
-    return typeof value === 'string' && /^[A-Za-z0-9_-]{24,64}$/.test(value);
-  }
-
-  function normalizeRealtimeDatabaseUrl(value) {
-    let parsed;
-    try { parsed = new URL(String(value || '').trim()); }
-    catch { throw new Error('Firebase Realtime Database URLの形式が正しくありません。'); }
-    if (parsed.protocol !== 'https:' || parsed.username || parsed.password || parsed.search || parsed.hash || parsed.port) {
-      throw new Error('Database URLにはHTTPSのFirebaseルートURL（ポート・クエリ・認証情報なし）を指定してください。');
-    }
-    const hostname = parsed.hostname.toLowerCase();
-    if (!(hostname.endsWith('.firebasedatabase.app') || hostname.endsWith('.firebaseio.com'))) {
-      throw new Error('Firebase Realtime DatabaseのURLを指定してください（firebasedatabase.app / firebaseio.com）。');
-    }
-    if (parsed.pathname !== '/' && parsed.pathname !== '') {
-      throw new Error('Database URLにはデータベースのルートURLだけを指定してください。パスは入力しないでください。');
-    }
-    return parsed.origin;
-  }
-
-  function readRealtimeSyncConfigFromFields() {
-    const databaseURL = normalizeRealtimeDatabaseUrl(document.getElementById('realtime-db-url')?.value);
-    const apiKey = String(document.getElementById('realtime-api-key')?.value || '').trim();
-    const roomCode = String(document.getElementById('realtime-room-code')?.value || '').trim();
-    if (apiKey.length < 20 || apiKey.length > 200 || !/^[A-Za-z0-9_-]+$/.test(apiKey)) {
-      throw new Error('Firebase Web API Keyが未入力、または形式不正です。');
-    }
-    if (!validRealtimeRoomCode(roomCode)) {
-      throw new Error('ルームコードは英数字・ハイフン・アンダースコアの24〜64文字で指定してください。');
-    }
-    return { databaseURL, apiKey, roomCode };
-  }
-
-  function persistRealtimeSyncSettings(config) {
-    try {
-      localStorage.setItem(REALTIME_SYNC_SETTINGS_KEY, JSON.stringify(config));
-      return true;
-    } catch (error) {
-      console.warn('リアルタイム同期設定を保存できませんでした。', error);
-      return false;
-    }
-  }
-
-  function initializeRealtimeSyncSettings() {
-    let stored = {};
-    try {
-      const raw = localStorage.getItem(REALTIME_SYNC_SETTINGS_KEY);
-      if (raw && raw.length <= 4000) {
-        const parsed = JSON.parse(raw);
-        if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) stored = parsed;
-      }
-    } catch (error) {
-      console.warn('リアルタイム同期設定を読み込めませんでした。', error);
-    }
-
-    const params = new URLSearchParams(window.location.search);
-    const queryConfig = {
-      databaseURL: params.get('kkdb') || '',
-      apiKey: params.get('kkkey') || '',
-      roomCode: params.get('kkroom') || ''
-    };
-    const config = {
-      databaseURL: queryConfig.databaseURL || String(stored.databaseURL || ''),
-      apiKey: queryConfig.apiKey || String(stored.apiKey || ''),
-      roomCode: queryConfig.roomCode || String(stored.roomCode || '')
-    };
-
-    const dbField = document.getElementById('realtime-db-url');
-    const keyField = document.getElementById('realtime-api-key');
-    const roomField = document.getElementById('realtime-room-code');
-    if (dbField) dbField.value = config.databaseURL;
-    if (keyField) keyField.value = config.apiKey;
-    if (roomField) roomField.value = config.roomCode;
-
-    const hasConfigFromLink = Boolean(queryConfig.databaseURL && queryConfig.apiKey && queryConfig.roomCode);
-    if (hasConfigFromLink) {
-      const persisted = persistRealtimeSyncSettings(config);
-      // The invite has already populated the fields. Only clean up the current URL
-      // when storage succeeded; keep the original invite intact when storage is blocked.
-      // Remove the room code as well because it is a bearer invite token, not a reload key.
-      if (persisted) {
-        try {
-          const cleanUrl = new URL(window.location.href);
-          cleanUrl.searchParams.delete('kkdb');
-          cleanUrl.searchParams.delete('kkkey');
-          cleanUrl.searchParams.delete('kkroom');
-          window.history.replaceState({}, '', cleanUrl);
-        } catch (_) { /* Embedded browsers may restrict history rewriting. */ }
-      }
-    }
-
-    const configured = config.databaseURL && config.apiKey && validRealtimeRoomCode(config.roomCode);
-    const details = document.getElementById('realtime-sync-config');
-    if (details && !configured) details.open = true;
-    updateRealtimeSyncStatus(
-      configured
-        ? '保存済み設定があります。接続して最新のチーム分け結果を受信します。'
-        : '未設定です。Firebaseの接続設定を一度行うと、同じ招待リンクの参加者間で結果を自動同期できます。',
-      configured ? 'disconnected' : 'disabled'
-    );
-  }
-
-  function realtimeAuthStorageKey(apiKey) {
-    return REALTIME_SYNC_AUTH_KEY_PREFIX + apiKey;
-  }
-
-  async function parseFirebaseResponse(response) {
-    const text = await response.text();
-    let data = null;
-    if (text) {
-      try { data = JSON.parse(text); }
-      catch { data = text; }
-    }
-    if (!response.ok) {
-      const detail = data && typeof data === 'object'
-        ? data.error?.message || data.error?.status || JSON.stringify(data.error || data)
-        : String(data || response.statusText);
-      throw new Error(`Firebase HTTP ${response.status}: ${detail}`);
-    }
-    return data;
-  }
-
-  async function refreshFirebaseSession(config, refreshToken) {
-    const body = new URLSearchParams({ grant_type: 'refresh_token', refresh_token: refreshToken });
-    const response = await fetch(`https://securetoken.googleapis.com/v1/token?key=${encodeURIComponent(config.apiKey)}`, {
-      method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString(), cache: 'no-store'
-    });
-    const data = await parseFirebaseResponse(response);
-    if (!data.id_token || !data.refresh_token) throw new Error('Firebaseトークンの更新応答が不正です。');
-    return { idToken: data.id_token, refreshToken: data.refresh_token, expiresIn: Number(data.expires_in) || 3600 };
-  }
-
-  async function signInFirebaseAnonymously(config) {
-    const storageKey = realtimeAuthStorageKey(config.apiKey);
-    let savedRefreshToken = '';
-    try { savedRefreshToken = localStorage.getItem(storageKey) || ''; } catch (_) {}
-    if (savedRefreshToken) {
-      try {
-        const refreshed = await refreshFirebaseSession(config, savedRefreshToken);
-        try { localStorage.setItem(storageKey, refreshed.refreshToken); } catch (_) {}
-        return refreshed;
-      } catch (error) {
-        try { localStorage.removeItem(storageKey); } catch (_) {}
-        console.warn('保存済みFirebaseセッションを更新できないため、匿名認証を再取得します。', error);
-      }
-    }
-
-    const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${encodeURIComponent(config.apiKey)}`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ returnSecureToken: true }), cache: 'no-store'
-    });
-    const data = await parseFirebaseResponse(response);
-    if (!data.idToken || !data.refreshToken) throw new Error('Firebase匿名認証の応答が不正です。Anonymousログイン設定を確認してください。');
-    try { localStorage.setItem(storageKey, data.refreshToken); } catch (_) {}
-    return { idToken: data.idToken, refreshToken: data.refreshToken, expiresIn: Number(data.expiresIn) || 3600 };
-  }
-
-  function realtimeDatabaseEndpoint(config, token = '') {
-    const url = new URL(`${config.databaseURL.replace(/\/+$/, '')}/kineticKickRooms/${config.roomCode}.json`);
-    if (token) url.searchParams.set('auth', token);
-    return url.toString();
-  }
-
-  function stopRealtimeSyncTransport() {
-    if (realtimeSync.source) {
-      realtimeSync.source.close();
-      realtimeSync.source = null;
-    }
-    if (realtimeSync.tokenTimer) {
-      clearTimeout(realtimeSync.tokenTimer);
-      realtimeSync.tokenTimer = 0;
-    }
-    realtimeSync.connected = false;
-    realtimeSync.streaming = false;
-  }
-
-  function scheduleFirebaseTokenRefresh(expiresIn) {
-    if (realtimeSync.tokenTimer) clearTimeout(realtimeSync.tokenTimer);
-    const delay = Math.max(60_000, (Math.max(60, expiresIn) - 90) * 1000);
-    realtimeSync.tokenTimer = window.setTimeout(async () => {
-      if (!realtimeSync.config || !realtimeSync.refreshToken) return;
-      try {
-        const refreshed = await refreshFirebaseSession(realtimeSync.config, realtimeSync.refreshToken);
-        realtimeSync.idToken = refreshed.idToken;
-        realtimeSync.refreshToken = refreshed.refreshToken;
-        realtimeSync.tokenExpiresAt = Date.now() + refreshed.expiresIn * 1000;
-        try { localStorage.setItem(realtimeAuthStorageKey(realtimeSync.config.apiKey), refreshed.refreshToken); } catch (_) {}
-        openFirebaseRealtimeStream();
-        scheduleFirebaseTokenRefresh(refreshed.expiresIn);
-      } catch (error) {
-        updateRealtimeSyncStatus(`認証更新に失敗しました: ${error.message}`, 'error');
-      }
-    }, delay);
-  }
-
-  function openFirebaseRealtimeStream() {
-    if (!realtimeSync.config || !realtimeSync.idToken || typeof EventSource !== 'function') {
-      throw new Error('このブラウザーではEventSourceが利用できないため、リアルタイム受信を開始できません。');
-    }
-    if (realtimeSync.source) realtimeSync.source.close();
-    const source = new EventSource(realtimeDatabaseEndpoint(realtimeSync.config, realtimeSync.idToken));
-    realtimeSync.source = source;
-    source.addEventListener('open', () => {
-      if (realtimeSync.source !== source) return;
-      realtimeSync.connected = true;
-      realtimeSync.streaming = true;
-      updateRealtimeSyncStatus(`接続中・ルーム ${realtimeSync.config.roomCode.slice(0, 6)}…`, 'connected');
-    });
-    const receive = event => {
-      if (realtimeSync.source !== source) return;
-      let envelope;
-      try { envelope = JSON.parse(event.data); }
-      catch (error) {
-        updateRealtimeSyncStatus('共有データの通知を解析できませんでした。', 'error');
-        return;
-      }
-      if (event.type === 'put' && envelope.path === '/') {
-        if (envelope.data == null) return;
-        const ok = applyRealtimeTeamState(envelope.data, 'stream');
-        if (!ok && Number(envelope.data?.revision) > realtimeSync.lastRevision) {
-          updateRealtimeSyncStatus('受信した共有データの形式が不正です。現在の表示は維持しています。', 'error');
-        }
-        return;
-      }
-      // Non-root updates can be partial. Fetch a complete, validated snapshot instead
-      // of merging arbitrary paths into live application state.
-      fetchRealtimeTeamState().then(snapshot => {
-        if (snapshot.data) applyRealtimeTeamState(snapshot.data, 'stream-refresh');
-      }).catch(error => updateRealtimeSyncStatus(`共有状態の再取得に失敗しました: ${error.message}`, 'error'));
-    };
-    source.addEventListener('put', receive);
-    source.addEventListener('patch', receive);
-    source.addEventListener('cancel', () => updateRealtimeSyncStatus('Firebaseのセキュリティルールによりアクセスが拒否されました。', 'error'));
-    source.addEventListener('auth_revoked', () => {
-      updateRealtimeSyncStatus('認証の更新が必要です。再接続します。', 'connecting');
-      void reconnectFirebaseSession();
-    });
-    source.onerror = () => {
-      if (realtimeSync.source !== source) return;
-      realtimeSync.streaming = false;
-      // Keep REST publishing enabled while EventSource reconnects; writes use authenticated
-      // HTTP and do not depend on the streaming socket being currently open.
-      realtimeSync.connected = Boolean(realtimeSync.config && realtimeSync.idToken);
-      updateRealtimeSyncStatus('通知ストリームが切断されました。自動再接続中です。HTTP送信は継続します。', 'connecting');
-    };
-  }
-
-  async function reconnectFirebaseSession() {
-    if (realtimeSync.reconnecting || !realtimeSync.config) return;
-    realtimeSync.reconnecting = true;
-    try {
-      const refreshed = await refreshFirebaseSession(realtimeSync.config, realtimeSync.refreshToken);
-      realtimeSync.idToken = refreshed.idToken;
-      realtimeSync.refreshToken = refreshed.refreshToken;
-      realtimeSync.tokenExpiresAt = Date.now() + refreshed.expiresIn * 1000;
-      try { localStorage.setItem(realtimeAuthStorageKey(realtimeSync.config.apiKey), refreshed.refreshToken); } catch (_) {}
-      openFirebaseRealtimeStream();
-      scheduleFirebaseTokenRefresh(refreshed.expiresIn);
-    } catch (error) {
-      updateRealtimeSyncStatus(`再接続に失敗しました: ${error.message}`, 'error');
-    } finally {
-      realtimeSync.reconnecting = false;
-    }
-  }
-
-  async function fetchRealtimeTeamState() {
-    if (!realtimeSync.config || !realtimeSync.idToken) throw new Error('同期サービスに接続していません。');
-    const response = await fetch(realtimeDatabaseEndpoint(realtimeSync.config, realtimeSync.idToken), {
-      method: 'GET', headers: { 'X-Firebase-ETag': 'true', 'Cache-Control': 'no-cache' }, cache: 'no-store'
-    });
-    const data = await parseFirebaseResponse(response);
-    return { data, etag: response.headers.get('ETag') };
-  }
-
-  function buildRealtimeTeamSnapshot(reason, revision = 0) {
-    return {
-      schema: REALTIME_SYNC_SCHEMA,
-      revision,
-      updatedAt: Date.now(),
-      clientId: realtimeSync.clientId,
-      reason: String(reason || 'team-update').slice(0, 60),
-      members: MEMBERS.map(member => ({
-        name: member.name,
-        gk: member.gk === 'GK1' || member.gk === 'GK2' ? member.gk : '',
-        pos: Array.isArray(member.pos) ? member.pos.filter(pos => pos === 'MF' || pos === 'FW') : ['MF', 'FW'],
-        main: String(member.main || '自由枠').slice(0, INPUT_LIMITS.roleTextChars),
-        sub: String(member.sub || '（なし）').slice(0, INPUT_LIMITS.roleTextChars),
-        isCustom: Boolean(member.isCustom)
-      })),
-      // Store mappings as arrays, not object keys: Firebase Realtime Database forbids
-      // '.', '$', '#', '[', ']' and '/' in child keys, all of which may appear in a
-      // user's display name. Names are values inside array records and remain lossless.
-      assignments: Object.entries(memberTeams)
-        .filter(([name, team]) => typeof name === 'string' && ['red', 'blue'].includes(team))
-        .map(([name, team]) => ({ name, team })),
-      chaos: Object.entries(currentChaosAssignments)
-        .map(([name, assignment]) => ({ name, assignment: parseChaosAssignment(assignment) }))
-        .filter(item => item.assignment),
-      checkedNames: MEMBERS.filter(member => member.checked).map(member => member.name)
-    };
-  }
-
-  function normalizeRealtimeRemoteState(raw) {
-    if (!raw || typeof raw !== 'object' || Array.isArray(raw) || raw.schema !== REALTIME_SYNC_SCHEMA ||
-        !Number.isSafeInteger(raw.revision) || raw.revision < 1 || !Array.isArray(raw.members) ||
-        raw.members.length > REALTIME_SYNC_MAX_MEMBERS || !Array.isArray(raw.assignments) ||
-        raw.assignments.length > REALTIME_SYNC_MAX_MEMBERS || !Array.isArray(raw.chaos) ||
-        raw.chaos.length > REALTIME_SYNC_MAX_MEMBERS || !Array.isArray(raw.checkedNames) ||
-        raw.checkedNames.length > REALTIME_SYNC_MAX_MEMBERS) {
-      throw new Error('共有状態の基本構造が不正です。');
-    }
-    const baseNames = new Set(BASE_MEMBERS.map(member => member.name));
-    const customByName = new Map();
-    const receivedMemberNames = new Set();
-    for (const source of raw.members) {
-      if (!source || typeof source.name !== 'string') throw new Error('共有メンバーの形式が不正です。');
-      const nameResult = validateMemberName(source.name);
-      if (!nameResult.ok) throw new Error(`共有メンバー名が不正です: ${nameResult.reason}`);
-      const name = nameResult.name;
-      if (receivedMemberNames.has(name)) throw new Error(`共有メンバーが重複しています: ${name}`);
-      receivedMemberNames.add(name);
-      if (baseNames.has(name)) continue;
-      const pos = Array.isArray(source.pos) ? [...new Set(source.pos.filter(value => value === 'MF' || value === 'FW'))] : ['MF', 'FW'];
-      customByName.set(name, {
-        name,
-        gk: source.gk === 'GK1' || source.gk === 'GK2' ? source.gk : '',
-        pos: pos.length ? pos : ['MF', 'FW'],
-        main: typeof source.main === 'string' ? normalizeRoleInput(source.main).slice(0, INPUT_LIMITS.roleTextChars) || '自由枠' : '自由枠',
-        sub: typeof source.sub === 'string' ? normalizeRoleInput(source.sub).slice(0, INPUT_LIMITS.roleTextChars) || '（なし）' : '（なし）',
-        checked: false,
-        isCustom: true
-      });
-    }
-    const knownNames = new Set([...baseNames, ...customByName.keys()]);
-    const assignments = Object.create(null);
-    const assignedNames = new Set();
-    for (const item of raw.assignments) {
-      if (!item || typeof item.name !== 'string' || !knownNames.has(item.name) || !['red', 'blue'].includes(item.team) || assignedNames.has(item.name)) {
-        throw new Error('チーム割当のメンバー名または所属が不正です。');
-      }
-      assignedNames.add(item.name);
-      assignments[item.name] = item.team;
-    }
-    const checkedInput = raw.checkedNames;
-    if (checkedInput.some(name => typeof name !== 'string' || !knownNames.has(name)) ||
-        new Set(checkedInput).size !== checkedInput.length) {
-      throw new Error('参加チェック状態が不正です。');
-    }
-    const checkedNames = new Set(checkedInput);
-    const chaos = Object.create(null);
-    const chaosNames = new Set();
-    for (const item of raw.chaos) {
-      if (!item || typeof item.name !== 'string' || !knownNames.has(item.name) || chaosNames.has(item.name)) {
-        throw new Error('役職闇鍋の割当形式が不正です。');
-      }
-      chaosNames.add(item.name);
-      const normalized = parseChaosAssignment(item.assignment);
-      if (!normalized || !assignments[item.name]) {
-        throw new Error('役職闇鍋の割当値またはチーム割当との対応が不正です。');
-      }
-      chaos[item.name] = normalized;
-    }
-    return {
-      schema: REALTIME_SYNC_SCHEMA,
-      revision: raw.revision,
-      updatedAt: Number.isFinite(raw.updatedAt) ? raw.updatedAt : 0,
-      clientId: typeof raw.clientId === 'string' ? raw.clientId.slice(0, 100) : '',
-      members: [...BASE_MEMBERS, ...customByName.values()],
-      assignments,
-      chaos,
-      checkedNames,
-      reason: typeof raw.reason === 'string' ? raw.reason.slice(0, 60) : ''
-    };
-  }
-
-  function applyRealtimeTeamState(raw, source = 'stream') {
-    let state;
-    try { state = normalizeRealtimeRemoteState(raw); }
-    catch (error) {
-      console.error('[Realtime sync] Rejected invalid shared state', error);
-      updateRealtimeSyncStatus(`不正な共有データを拒否しました: ${error.message}`, 'error');
-      return false;
-    }
-    if (state.clientId === realtimeSync.clientId) {
-      realtimeSync.lastRevision = Math.max(realtimeSync.lastRevision, state.revision);
-      realtimeSync.lastState = raw;
-      return false;
-    }
-    if (state.revision <= realtimeSync.lastRevision) return false;
-
-    realtimeSync.applyingRemote = true;
-    try {
-      // The shared room is authoritative for custom members so every participant
-      // can render the same team board, including members added by another client.
-      MEMBERS = [...BASE_MEMBERS, ...state.members.filter(member => member.isCustom)];
-      memberTeams = Object.assign(Object.create(null), state.assignments);
-      currentChaosAssignments = Object.assign(Object.create(null), state.chaos);
-      memberLiveState = Object.create(null);
-      for (const member of MEMBERS) member.checked = state.checkedNames.has(member.name);
-      realtimeSync.lastRevision = state.revision;
-      realtimeSync.lastState = raw;
-      saveCustomMembersToStorage();
-      renderMembers();
-      updateRealtimeSyncStatus(`同期済み・版 ${state.revision}（${source === 'initial' ? '接続時の最新状態' : '他の参加者の更新'}）`, 'connected');
-      return true;
-    } finally {
-      realtimeSync.applyingRemote = false;
-    }
-  }
-
-  async function connectRealtimeSync() {
-    if (realtimeSync.connecting) return false;
-    let config;
-    try { config = readRealtimeSyncConfigFromFields(); }
-    catch (error) {
-      updateRealtimeSyncStatus(error.message, 'error');
-      showToast(error.message, 'warn');
-      throw error;
-    }
-    realtimeSync.connecting = true;
-    updateRealtimeSyncStatus('Firebase認証と共有ルームへの接続を準備しています…', 'connecting');
-    // Each explicit connection re-reads the server as the source of truth. Clear the
-    // local revision gate even when reconnecting to the same room: the room may have
-    // been reset, rolled back, or changed while this client was disconnected. Invalidate
-    // in-flight publishes so an old request cannot race the new connection handshake.
-    realtimeSync.lastRevision = 0;
-    realtimeSync.lastState = null;
-    realtimeSync.publishSequence += 1;
-    stopRealtimeSyncTransport();
-    realtimeSync.config = config;
-    persistRealtimeSyncSettings(config);
-    try {
-      const auth = await signInFirebaseAnonymously(config);
-      realtimeSync.idToken = auth.idToken;
-      realtimeSync.refreshToken = auth.refreshToken;
-      realtimeSync.tokenExpiresAt = Date.now() + auth.expiresIn * 1000;
-      const snapshot = await fetchRealtimeTeamState();
-      if (snapshot.data) {
-        // Validate before changing the active local roster or status.
-        normalizeRealtimeRemoteState(snapshot.data);
-        applyRealtimeTeamState(snapshot.data, 'initial');
-      } else {
-        // Initialize an empty room with compare-and-set against its original ETag.
-        // Concurrent clients cannot overwrite each other during first connection.
-        if (!snapshot.etag) throw new Error('空ルームのETagを取得できません。FirebaseのREST応答を確認してください。');
-        const initialState = buildRealtimeTeamSnapshot('room-initialized', 1);
-        const initialResponse = await fetch(realtimeDatabaseEndpoint(config, realtimeSync.idToken), {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json', 'if-match': snapshot.etag },
-          body: JSON.stringify(initialState), cache: 'no-store'
-        });
-        if (initialResponse.status === 412) {
-          const latest = await fetchRealtimeTeamState();
-          if (!latest.data) throw new Error('他の参加者がルームを初期化しましたが、最新状態を取得できませんでした。');
-          normalizeRealtimeRemoteState(latest.data);
-          applyRealtimeTeamState(latest.data, 'initial-race');
-        } else {
-          await parseFirebaseResponse(initialResponse);
-          realtimeSync.lastRevision = 1;
-          realtimeSync.lastState = initialState;
-        }
-      }
-      realtimeSync.connected = true; // REST writes do not depend on SSE's first open event.
-      openFirebaseRealtimeStream();
-      scheduleFirebaseTokenRefresh(auth.expiresIn);
-      updateRealtimeSyncStatus(
-        snapshot.data ? `接続準備完了。共有状態の版 ${realtimeSync.lastRevision} を取得しました。` : `接続準備完了。共有ルームの版 ${realtimeSync.lastRevision} を初期化しました。`,
-        'connecting'
-      );
-      // If this client reconnects in the same page, local edits made while offline
-      // may not exist in the last server snapshot (which has this same clientId).
-      // Republish the current local state once, via the same ETag-guarded path.
-      if (snapshot.data && snapshot.data.clientId === realtimeSync.clientId) {
-        requestRealtimeTeamPublish('reconnect-local-state-reconcile');
-      }
-      return true;
-    } catch (error) {
-      stopRealtimeSyncTransport();
-      updateRealtimeSyncStatus(`接続に失敗しました: ${error.message}`, 'error');
-      showToast(`リアルタイム同期に接続できませんでした: ${error.message}`, 'warn');
-      throw error;
-    } finally {
-      realtimeSync.connecting = false;
-    }
-  }
-
-  function disconnectRealtimeSync() {
-    stopRealtimeSyncTransport();
-    realtimeSync.config = null;
-    realtimeSync.idToken = '';
-    realtimeSync.refreshToken = '';
-    updateRealtimeSyncStatus('リアルタイム同期を切断しました。設定は保存されています。', 'disconnected');
-  }
-
-  function generateRealtimeRoomCode() {
-    const field = document.getElementById('realtime-room-code');
-    if (!field) return;
-    if (!window.crypto || typeof window.crypto.getRandomValues !== 'function') {
-      const message = '安全なルームコードを生成できません。HTTPSのページを開いてください。';
-      updateRealtimeSyncStatus(message, 'error');
-      showToast(message, 'warn');
-      return;
-    }
-    field.value = makeRandomHex(16);
-    document.getElementById('realtime-sync-config')?.setAttribute('open', '');
-    updateRealtimeSyncStatus('新しいルームコードを生成しました。接続後、「招待リンクをコピー」で参加者へ共有してください。', 'disabled');
-  }
-
-  function copyRealtimeInviteLink() {
-    let config;
-    try { config = readRealtimeSyncConfigFromFields(); }
-    catch (error) {
-      updateRealtimeSyncStatus(error.message, 'error');
-      showToast(error.message, 'warn');
-      return false;
-    }
-    persistRealtimeSyncSettings(config);
-    const invite = new URL(window.location.href);
-    invite.searchParams.set('kkdb', config.databaseURL);
-    invite.searchParams.set('kkkey', config.apiKey);
-    invite.searchParams.set('kkroom', config.roomCode);
-    const value = invite.toString();
-    const fallback = () => {
-      const textarea = document.getElementById('realtime-invite-fallback');
-      if (textarea) {
-        textarea.hidden = false;
-        textarea.value = value;
-        textarea.focus();
-        textarea.select();
-      }
-      showToast('招待リンクを選択しました。手動でコピーして参加者へ共有してください。', 'info');
-      return false;
-    };
-    try {
-      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-        return navigator.clipboard.writeText(value).then(() => {
-          showToast('招待リンクをコピーしました。ルームコードを知っている参加者はチーム結果を変更できます。', 'success');
-          return true;
-        }).catch(fallback);
-      }
-    } catch (_) { /* Use the synchronous fallback while user activation is present. */ }
-    return fallback();
-  }
-
-  async function maybeRefreshFirebaseToken() {
-    if (!realtimeSync.config || !realtimeSync.refreshToken) return;
-    if (Date.now() < realtimeSync.tokenExpiresAt - 60_000) return;
-    const refreshed = await refreshFirebaseSession(realtimeSync.config, realtimeSync.refreshToken);
-    realtimeSync.idToken = refreshed.idToken;
-    realtimeSync.refreshToken = refreshed.refreshToken;
-    realtimeSync.tokenExpiresAt = Date.now() + refreshed.expiresIn * 1000;
-    try { localStorage.setItem(realtimeAuthStorageKey(realtimeSync.config.apiKey), refreshed.refreshToken); } catch (_) {}
-    scheduleFirebaseTokenRefresh(refreshed.expiresIn);
-  }
-
-  async function publishRealtimeTeamState(reason = 'team-update') {
-    if (!realtimeSync.config || !realtimeSync.idToken || !realtimeSync.connected || realtimeSync.applyingRemote) return false;
-    const sequence = ++realtimeSync.publishSequence;
-    updateRealtimeSyncStatus('チーム分け結果を共有ルームへ保存しています…', 'connecting');
-
-    for (let attempt = 1; attempt <= REALTIME_SYNC_MAX_WRITE_ATTEMPTS; attempt++) {
-      // A newer local change supersedes this publication. Never let an older retry
-      // overwrite the most recent user action after a 412 ETag conflict.
-      if (sequence !== realtimeSync.publishSequence) return false;
-      await maybeRefreshFirebaseToken();
-      const current = await fetchRealtimeTeamState();
-      if (sequence !== realtimeSync.publishSequence) return false;
-      if (!current.etag) throw new Error('FirebaseがETagを返しませんでした。条件付き更新を安全に実行できません。');
-      const localSnapshot = buildRealtimeTeamSnapshot(reason);
-      const nextRevision = Math.max(Number(current.data?.revision) || 0, realtimeSync.lastRevision) + 1;
-      const payload = { ...localSnapshot, revision: nextRevision, updatedAt: Date.now(), clientId: realtimeSync.clientId };
-      const response = await fetch(realtimeDatabaseEndpoint(realtimeSync.config, realtimeSync.idToken), {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'if-match': current.etag },
-        body: JSON.stringify(payload), cache: 'no-store'
-      });
-      if (response.status === 412) {
-        if (attempt < REALTIME_SYNC_MAX_WRITE_ATTEMPTS) {
-          await new Promise(resolve => setTimeout(resolve, 60 * attempt));
-          continue;
-        }
-        throw new Error('同時更新が続いたため保存を確定できませんでした。もう一度振り分けてください。');
-      }
-      await parseFirebaseResponse(response);
-      realtimeSync.lastRevision = nextRevision;
-      realtimeSync.lastState = payload;
-      // A newer local operation may have been started while this network write was in flight.
-      if (sequence === realtimeSync.publishSequence) {
-        updateRealtimeSyncStatus(`同期済み・版 ${nextRevision}。同じルームの参加者へ配信しました。`, 'connected');
-      }
-      return true;
-    }
-    return false;
-  }
-
-  function requestRealtimeTeamPublish(reason) {
-    if (!realtimeSync.config || !realtimeSync.connected || realtimeSync.applyingRemote) return;
-    publishRealtimeTeamState(reason).catch(error => {
-      console.error('[Realtime sync] Publish failed', error);
-      updateRealtimeSyncStatus(`共有保存に失敗しました: ${error.message}。ローカルの結果は保持しています。`, 'error');
-      showToast('チーム分け結果を他の参加者へ送信できませんでした。同期状態を確認してください。', 'warn');
-    });
-  }
-
-  function scheduleRealtimeSyncAutoConnect() {
-    if (realtimeSync.autoConnectAttempted || realtimeSync.connected || realtimeSync.connecting) return;
-    const db = document.getElementById('realtime-db-url')?.value;
-    const key = document.getElementById('realtime-api-key')?.value;
-    const room = document.getElementById('realtime-room-code')?.value;
-    if (!db || !key || !validRealtimeRoomCode(room)) return;
-    realtimeSync.autoConnectAttempted = true;
-    window.setTimeout(() => {
-      connectRealtimeSync().catch(() => { /* The status panel displays the actionable error. */ });
-    }, 350);
-  }
-
   function loadCustomMembersFromStorage() {
     try {
       const saved = localStorage.getItem('kinetic_custom_members_v20');
@@ -3215,7 +2470,6 @@
     subInput.value = "";
 
     renderMembers();
-    requestRealtimeTeamPublish('custom-member-added');
     showToast(saved
       ? `✅ 「${name}」をリストに追加し、保存しました。`
       : `⚠️ 「${name}」は追加しましたが、保存できませんでした。このセッション中のみ保持されます。`, saved ? 'success' : 'warn');
@@ -3231,13 +2485,12 @@
     customEnemyNames = customEnemyNames.filter(n => n !== name);
     const saved = saveCustomMembersToStorage();
     renderMembers();
-    requestRealtimeTeamPublish('custom-member-deleted');
     showToast(saved
       ? `🗑️ 「${name}」を削除しました。`
       : `⚠️ 「${name}」はこのセッションから削除しましたが、保存できなかったため再読み込み後に戻る可能性があります。`, saved ? 'info' : 'warn');
   }
 
-  // --- TEAM SHARE & SYNC FOR DISCORD / IFRAME ---
+  // --- MANUAL TEAM SHARE FOR DISCORD / IFRAME ---
   // Keep ordinary names human-readable; JSON-quote names containing separators or
   // brackets so exports can be imported without splitting the name itself.
   function encodeSharedMemberName(name) {
@@ -3512,10 +2765,9 @@
 
     const saved = saveCustomMembersToStorage();
     renderMembers();
-    requestRealtimeTeamPublish('shared-text-imported');
     toggleImportShareBox(false);
     showToast(saved
-      ? `✅ ${importedTeams.size}名のチーム分け結果を同期しました！`
+      ? `✅ ${importedTeams.size}名のチーム分け結果を反映しました！`
       : `⚠️ ${importedTeams.size}名のチーム分け結果は反映しましたが、カスタムメンバーを保存できませんでした。再読み込み後に追加メンバーが消える可能性があります。`, saved ? 'success' : 'warn');
   }
 
@@ -4811,7 +4063,6 @@
     }
     delete currentChaosAssignments[name];
     renderMembers();
-    requestRealtimeTeamPublish('manual-team-assignment');
   }
 
   function resetTeams() {
@@ -4819,7 +4070,6 @@
     currentChaosAssignments = Object.create(null);
     memberLiveState = Object.create(null);
     renderMembers();
-    requestRealtimeTeamPublish('team-reset');
   }
 
   function shuffleArray(items) {
@@ -4971,7 +4221,6 @@
     }
 
     renderMembers();
-    requestRealtimeTeamPublish(`random-team-${mode}`);
   }
 
   function updateTeamBoard() {
@@ -5108,7 +4357,7 @@
 
   // --- RESILIENT ACTIVITY BOOT / DIAGNOSTICS ---
   // This build is self-contained and intentionally has no external JS dependencies.
-  const APP_BUILD_ID = 'kk-sim-activity-singlefile-2026-10-16-r37';
+  const APP_BUILD_ID = 'kk-sim-activity-singlefile-2026-10-16-r38';
   document.documentElement.dataset.appBuild = APP_BUILD_ID;
   console.info(`[Kinetic Kick] build=${APP_BUILD_ID}`);
 
@@ -5538,7 +4787,6 @@
       ['タブ表示', repairActiveTab],
       ['Discord/iframe表示', initDiscordAndIframeSupport],
       ['保存済みメンバー', loadCustomMembersFromStorage],
-      ['リアルタイム同期設定', initializeRealtimeSyncSettings],
       ['編成プリセット', repairPresets],
       ['編成シミュレーター', repairPartySimulator],
       ['役職フィルター', repairRolePills],
@@ -5605,7 +4853,6 @@
           status.dataset.state = 'ok';
         }
         scheduleActiveLayoutAudit();
-        scheduleRealtimeSyncAutoConnect();
       } else {
         setRuntimeStatus(
           `初期化に失敗しました。ビルド: ${APP_BUILD_ID}。詳細: ${failures.join(' / ')}`,
@@ -5698,7 +4945,22 @@
     }, 0);
   }, { capture: true, passive: true });
 
+  function cleanupLegacyRealtimeSyncStorage() {
+    try {
+      localStorage.removeItem('kinetic_kick_realtime_sync_settings_v1');
+      const legacyAuthKeys = [];
+      for (let index = 0; index < localStorage.length; index += 1) {
+        const key = localStorage.key(index);
+        if (key && key.startsWith('kinetic_kick_firebase_refresh_v1:')) legacyAuthKeys.push(key);
+      }
+      legacyAuthKeys.forEach(key => localStorage.removeItem(key));
+    } catch (_) {
+      // Storage may be unavailable in a restricted embed; legacy values are inert without sync code.
+    }
+  }
+
   // Install observers before startup so lost dynamic UI can be detected after rendering.
+  cleanupLegacyRealtimeSyncStorage();
   installUiIntegrityObserver();
 
   // Install input delegation immediately: buttons are already parsed because this
