@@ -102,6 +102,23 @@
     .final-cta h2 { max-width: 720px; margin: 0 auto; }
     .final-cta p { margin: 15px auto 25px; color: var(--muted); font-size: 14px; }
     .final-cta .actions { justify-content: center; }
+
+    .legal-section { background: #100d1e; border-top: 1px solid var(--line); }
+    .legal-intro { max-width: 850px; margin: 0 0 28px; color: var(--muted); font-size: 13px; }
+    .legal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .legal-card { min-width: 0; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(150deg, rgba(46, 35, 72, .58), rgba(25, 20, 43, .72)); }
+    .legal-card h3 { margin: 0 0 12px; color: #f2eaff; }
+    .legal-card h4 { margin: 18px 0 6px; color: #e4d7ff; font-size: 13px; }
+    .legal-card p, .legal-card li { color: #c9c1d9; font-size: 12px; line-height: 1.95; }
+    .legal-card p { margin: 8px 0; }
+    .legal-card ul { margin: 8px 0; padding-left: 1.4em; }
+    .legal-meta { margin-top: 18px; color: #a99dbb; font-size: 11px; }
+    .legal-warning { margin: 22px 0 0; padding: 16px 18px; border: 1px solid rgba(255, 197, 120, .35); border-radius: 13px; background: rgba(255, 197, 120, .07); color: #f1dfc4; font-size: 12px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
+    .footer-links a { color: #cfc3e4; text-decoration: none; }
+    .footer-links a:hover { color: var(--pink); }
+    @media (max-width: 620px) { .legal-grid { grid-template-columns: 1fr; } .legal-card { padding: 20px; } }
+
     footer { padding: 24px 0; border-top: 1px solid var(--line); color: #958aa9; font-size: 11px; }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
     .footer-name { color: #dfd6ee; font-weight: 800; }
@@ -153,6 +170,7 @@
         <a href="#features">できること</a>
         <a href="#how-to">導入方法</a>
         <a href="#faq">FAQ</a>
+        <a href="#legal">利用規約・ポリシー</a>
         <a class="nav-cta" href="https://discord.com/oauth2/authorize?client_id=1504043011884187659&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer">Botを導入する ↗</a>
       </nav>
     </div>
@@ -271,6 +289,130 @@
       </div>
     </section>
 
+    <section class="legal-section" id="legal" aria-labelledby="legal-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">POLICIES & INFORMATION</p>
+          <h2 id="legal-title">安心して利用するために。</h2>
+          <p class="section-intro">ちるたいむBotの利用条件、情報の取り扱い、サービス上の注意事項を掲載しています。導入するサーバー管理者だけでなく、Botを利用するすべての方がご確認ください。</p>
+        </div>
+        <div class="legal-grid">
+          <article class="legal-card" id="terms">
+            <h3>利用規約</h3>
+            <p>本規約は、ちるたいむBot（以下「本サービス」）の利用条件を定めるものです。本サービスを導入または利用した場合、本規約に同意したものとして取り扱います。</p>
+            <h4>1. 適用・利用者</h4>
+            <p>本規約は、本サービスをサーバーに導入する管理者およびDiscord上で本サービスを利用するすべての方に適用されます。利用者はDiscordおよび適用される各サービスの規約も遵守してください。</p>
+            <h4>2. 禁止事項</h4>
+            <ul>
+              <li>法令、公序良俗またはDiscordの規約に違反する行為</li>
+              <li>第三者への嫌がらせ、差別、脅迫、権利侵害を目的とする利用</li>
+              <li>本サービス、外部サービスまたは第三者のシステムに過度な負荷を与える行為</li>
+              <li>不正アクセス、脆弱性の悪用、Botの妨害・リバースエンジニアリング等の運営を妨げる行為</li>
+              <li>他人になりすます行為、または第三者の情報を本人の同意なく入力・公開する行為</li>
+              <li>本サービスを違法行為、詐欺、スパムその他不正な目的に利用する行為</li>
+            </ul>
+            <h4>3. サーバー管理者の責任</h4>
+            <p>導入を行う管理者は、Botに付与する権限、利用可能なチャンネル、サーバー内での利用ルールを適切に管理してください。メンバーに対し、Botへの入力内容がAI処理等に利用される可能性を周知してください。</p>
+            <h4>4. 提供の変更・停止</h4>
+            <p>運営者は、保守、障害、外部サービスの変更、セキュリティ上の必要その他の事情により、本サービスの全部または一部を変更・中断・終了する場合があります。可能な場合は事前または事後に告知しますが、緊急時はこの限りではありません。</p>
+            <h4>5. 利用制限</h4>
+            <p>規約違反、不正利用、運営上の支障または安全上の懸念が確認された場合、運営者は必要な範囲で利用制限または提供停止を行うことがあります。</p>
+            <h4>6. 規約の変更</h4>
+            <p>運営者は必要に応じて本規約を変更できます。変更後の規約は本ページに掲載した時点、または別途定める効力発生日から適用します。重要な変更は可能な範囲で告知します。</p>
+            <h4>7. 準拠法・協議</h4>
+            <p>本規約は日本法を準拠法とします。本サービスに関して問題が生じた場合、利用者と運営者は誠実に協議して解決を図るものとします。</p>
+            <p class="legal-meta">制定日：2026年10月30日</p>
+          </article>
+
+          <article class="legal-card" id="privacy">
+            <h3>プライバシーポリシー</h3>
+            <p>本ポリシーは、ちるたいむBot（以下「本サービス」）における情報の取り扱いを説明するものです。本サービスを利用する前に内容をご確認ください。</p>
+            <h4>1. 取り扱う可能性がある情報</h4>
+            <ul>
+              <li>Discord上のユーザーID、サーバーID、チャンネルID、ユーザー名等の識別・表示情報</li>
+              <li>Bot宛てのメッセージ、コマンド、会話内容、利用履歴およびエラー・稼働ログ</li>
+              <li>利用者が機能を通じて送信したファイル、画像、音声等のデータ</li>
+              <li>AIメモリ等の機能で利用者または管理者が登録・編集した情報</li>
+              <li>不正利用の防止、障害調査、サービス改善に必要な技術情報</li>
+            </ul>
+            <p>情報の取得は、Botへのメンション、コマンド、機能の利用など、各機能の動作に必要な範囲で行われます。Botが参加しているサーバー内のすべての会話を常時収集するものではありません。ただし、Discordのイベント仕様やBotの設定により処理対象となる情報は異なります。</p>
+            <h4>2. 利用目的</h4>
+            <ul>
+              <li>AIチャット、検索、メモリ、音声等の機能を提供するため</li>
+              <li>利用者の操作に応じた応答の生成、会話の文脈処理および機能の実行のため</li>
+              <li>障害対応、品質改善、不正利用の調査およびセキュリティ確保のため</li>
+              <li>問い合わせへの対応および重要なお知らせのため</li>
+            </ul>
+            <h4>3. 外部サービスへの送信</h4>
+            <p>AI応答の生成、検索、音声処理、サイト公開等に必要な場合、入力内容や処理に必要な情報が、GoogleのGemini API・検索関連機能、音声関連サービス、GitHub Pages等の外部サービスに送信・保存されることがあります。実際の送信先は利用する機能や構成により異なり、各事業者の規約およびプライバシーポリシーも適用されます。外部サービス側での処理・保存について、運営者がその内容や期間を決定できるものではありません。</p>
+            <p>利用者は、パスワード、認証コード、決済情報、住所、健康情報その他の機微な情報や、第三者の秘密情報を、必要性と安全性を確認せずに入力しないでください。</p>
+            <h4>4. 第三者提供・委託</h4>
+            <p>運営者は、取得した情報を販売する目的で取り扱いません。機能提供、保守、障害対応またはセキュリティ確保に必要な範囲で、外部サービス事業者に情報を送信し、処理を委託する場合があります。また、法令に基づく場合や、権利・安全を保護するために必要な場合には、適法な範囲で情報を開示することがあります。</p>
+            <h4>5. 保存・削除・安全管理</h4>
+            <p>保存期間は情報の種類、機能、システム設定および障害・不正利用への対応上の必要性によって異なります。すべての情報について一律の保存期間や即時削除を保証するものではありません。利用者が登録したAIメモリ等は、機能内に削除手段が用意されている場合、その手段で削除してください。ログ、バックアップ、外部サービス側の記録等は、直ちに削除できない場合があります。運営者は、取り扱う情報への不正アクセス、漏えい、滅失等を防ぐため、合理的な安全管理に努めます。</p>
+            <h4>6. 利用者による利用停止等</h4>
+            <p>本サービスに情報を送信したくない場合は、Botへの入力・機能の利用を停止してください。サーバー管理者は、サーバーからBotを削除することで、そのサーバーでの以後の利用を停止できます。公開の問い合わせ窓口は設けていないため、本ページを通じた個別の開示・訂正・削除請求の受付は行っていません。法令上必要な対応が生じる場合は、適用法令に従って取り扱います。</p>
+            <h4>7. 改定</h4>
+            <p>サービス内容や法令等の変更に応じて本ポリシーを改定することがあります。改定内容は本ページに掲載します。</p>
+            <p class="legal-meta">制定日：2026年10月30日</p>
+          </article>
+
+          <article class="legal-card" id="disclaimer">
+            <h3>免責事項</h3>
+            <h4>1. AIの回答について</h4>
+            <p>AIの回答には、誤り、不正確な情報、古い情報、文脈の誤解または不適切な表現が含まれる場合があります。回答は正確性、完全性、有用性、最新性を保証するものではありません。重要な判断は必ず一次資料や専門家等で確認してください。</p>
+            <h4>2. 専門的助言ではありません</h4>
+            <p>本サービスの回答は、医療、法律、税務、投資、安全その他の専門的助言・診断・判断に代わるものではありません。緊急時や重大な判断では、適切な専門機関へ相談してください。</p>
+            <h4>3. 外部サービス・稼働状況</h4>
+            <p>Discord、AIモデル、検索サービス、音声サービス、ネットワーク等の障害・仕様変更・利用制限により、応答遅延、機能停止、回答品質の変化が生じる場合があります。常時稼働やデータの完全な保存を保証するものではありません。</p>
+            <h4>4. 利用者の判断と責任</h4>
+            <p>本サービスの回答・生成物の利用、共有、公開およびそれに基づく判断は、利用者自身の責任で行ってください。第三者の権利、秘密情報、各サービスの規約を確認してください。</p>
+            <h4>5. 損害への対応</h4>
+            <p>運営者は、法令上認められる範囲で、本サービスの利用または利用不能に関連して生じた損害について責任を負わないものとします。ただし、法令により免責が認められない場合はこの限りではありません。</p>
+            <p class="legal-meta">制定日：2026年10月30日</p>
+          </article>
+
+          <article class="legal-card" id="service-info">
+            <h3>サービス仕様・利用上の注意</h3>
+            <h4>1. サービスの位置付け</h4>
+            <p>ちるたいむBotは、Discordサーバー上でAIチャット、Web検索、AIメモリ管理、音声関連機能等を提供する個人開発のサービスです。機能は開発・検証・改善の過程にあり、予告なく変更される場合があります。</p>
+            <h4>2. 機能の利用可能性</h4>
+            <p>利用できる機能、コマンド、対応モデル、応答速度、利用上限等は、運営状況、設定、外部サービスの提供条件等により変わります。サイト上の紹介は、すべての機能が常時利用可能であることを保証しません。</p>
+            <h4>3. 権限設定</h4>
+            <p>Bot導入時にはDiscordの認証画面に表示される権限を必ず確認してください。現在の導入リンクは「管理者」権限を要求する設定です。管理者権限はサーバー内で広範な操作を可能にするため、導入前に必要性を十分に確認してください。サーバー管理者は、導入後もチャンネル権限や利用範囲を適切に管理してください。</p>
+            <h4>4. 生成物・検索結果</h4>
+            <p>生成物や検索結果を外部へ公開・再利用する場合、内容の正確性、著作権、商標権、肖像権、利用元サービスの条件等を利用者自身で確認してください。検索結果や引用元の表示が常に提供されるとは限りません。</p>
+            <h4>5. 料金・提供条件</h4>
+            <p>本サイトは料金や利用上限を一律に保証するものではありません。外部サービスの仕様・料金・提供条件が変更された場合、機能や提供条件を変更することがあります。料金が発生する機能を導入する場合は、利用前に別途明示します。</p>
+            <p class="legal-meta">最終更新日：2026年10月30日</p>
+          </article>
+
+          <article class="legal-card" id="operator">
+            <h3>運営者情報・お問い合わせ</h3>
+            <p>本サービスは個人開発のDiscord Botです。</p>
+            <h4>運営者</h4>
+            <p>いちごみるく</p>
+            <h4>お問い合わせ</h4>
+            <p>公開用のお問い合わせ窓口および連絡先は設けていません。個別の問い合わせへの対応を保証するものではありません。</p>
+            <h4>サービス名</h4>
+            <p>ちるたいむBot</p>
+            <h4>公式サイト</h4>
+            <p><a href="https://1chigomilk.github.io/ch1lltimebotdownloadsite/" target="_blank" rel="noopener noreferrer">https://1chigomilk.github.io/ch1lltimebotdownloadsite/</a></p>
+            <p class="legal-meta">情報更新日：2026年10月30日</p>
+          </article>
+
+          <article class="legal-card" id="ip">
+            <h3>知的財産権・コンテンツ</h3>
+            <p>本サービスのプログラム、名称、ロゴ、デザイン等に関する権利は、運営者または正当な権利を有する者に帰属します。権利者の許可なく、複製、改変、再配布、商用利用等を行わないでください。</p>
+            <p>利用者が入力した文章・画像・音声等について、利用者は必要な権利または許諾を有していることを確認してください。第三者の著作物等を入力・生成・公開する場合は、各権利者および利用サービスの規約を遵守してください。</p>
+            <p>AIによる生成物の権利関係や利用可否は、入力内容、生成方法、適用法令および外部サービスの規約等によって異なります。運営者は、すべての生成物について独占的権利や第三者権利を侵害しないことを保証しません。</p>
+            <p class="legal-meta">制定日：2026年10月30日</p>
+          </article>
+        </div>
+        <div class="legal-warning"><strong>利用前にご確認ください：</strong>本サービスは外部のAI・検索・音声・ホスティングサービスを利用するため、入力内容が外部事業者へ送信される場合があります。機密情報や第三者の個人情報は入力しないでください。公開の問い合わせ窓口はありません。</div>
+      </div>
+    </section>
+
     <section class="final-cta" aria-labelledby="final-title">
       <div class="wrap">
         <p class="section-kicker">LET'S CHAT</p>
@@ -287,9 +429,9 @@
     <div class="wrap footer-inner">
       <span class="footer-name">✦ ちるたいむBot</span>
       <span>個人開発のDiscord向けAI Bot · 継続開発中</span>
+      <span class="footer-links"><a href="#terms">利用規約</a><a href="#privacy">プライバシー</a><a href="#disclaimer">免責事項</a><a href="#operator">運営者情報</a></span>
       <span>© 2026 ちるたいむBot</span>
     </div>
   </footer>
 </body>
 </html>
-
