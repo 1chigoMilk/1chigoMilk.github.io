@@ -519,6 +519,21 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
       }
     });
   });
+
+  // Preserve access to the full policy and FAQ text when printing or saving as PDF.
+  const expandedForPrint = [];
+  window.addEventListener("beforeprint", () => {
+    document.querySelectorAll("details").forEach((details) => {
+      if (!details.open) {
+        expandedForPrint.push(details);
+        details.open = true;
+      }
+    });
+  });
+  window.addEventListener("afterprint", () => {
+    expandedForPrint.forEach((details) => { details.open = false; });
+    expandedForPrint.length = 0;
+  });
 })();
 </script>
 </body>
