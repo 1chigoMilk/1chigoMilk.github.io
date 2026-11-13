@@ -642,8 +642,9 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   const progress = document.querySelector(".reading-progress");
   const progressFill = document.querySelector(".reading-progress-fill");
   const sectionNavLinks = [...document.querySelectorAll(".nav a[href^='#'], .mobile-links a[href^='#']")];
-  const navSections = [...new Set(sectionNavLinks.map((link) => link.getAttribute("href").slice(1)))]
-    .map((id) => document.getElementById(id)).filter(Boolean);
+  const navigationIds = new Set(sectionNavLinks.map((link) => link.getAttribute("href").slice(1)));
+  const navSections = [...document.querySelectorAll("main section[id]")]
+    .filter((section) => navigationIds.has(section.id));
   if (progress && progressFill) progress.hidden = false;
   let scrollQueued = false;
   const updateReadingState = () => {
