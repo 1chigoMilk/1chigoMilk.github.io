@@ -28,6 +28,7 @@
   --content-width: 1140px;
 }
 *, *::before, *::after {box-sizing: border-box;}
+[hidden] {display: none !important;}
 html {scroll-behavior: smooth;scroll-padding-top: 95px;}
 body {margin: 0;background: var(--bg);color: var(--text);font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;line-height: 1.86;letter-spacing: .012em;overflow-wrap: anywhere;-webkit-font-smoothing: antialiased;}
 img {max-width: 100%;}
@@ -142,6 +143,17 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .trouble-item p {font-size: 14px;color: var(--muted);margin: 0;}
 .faq-grid {display: grid;grid-template-columns: .75fr 1.25fr;gap: 57px;align-items: start;}
 .faq-hint {font-size: 13px;color: var(--subtle);}
+.faq-search {margin-top: 18px;padding: 20px;border: 1px solid var(--line-hover);border-radius: 17px;background: rgba(255,255,255,.045);}
+.faq-search label {display: block;margin-bottom: 10px;font-size: 13px;font-weight: 830;color: #f7ebff;}
+.faq-search-row {display: flex;gap: 9px;align-items: stretch;}
+.faq-search input {width: 100%;min-width: 0;min-height: 46px;padding: 10px 14px;background: #130f24;color: var(--text);border: 1px solid var(--line-hover);border-radius: 11px;font: inherit;font-size: 14px;appearance: auto;}
+.faq-search input::placeholder {color: #afa3c5;}
+.faq-search button,.faq-reset {min-height: 46px;cursor: pointer;border: 1px solid var(--line-hover);border-radius: 11px;background: #342749;color: var(--text);padding: 10px 15px;font-size: 13px;font-weight: 800;white-space: nowrap;}
+.faq-search button:hover,.faq-reset:hover {background: #48315e;}
+.faq-search-status {margin: 12px 0 0;color: var(--muted);font-size: 13px;}
+.faq-empty {padding: 24px;border: 1px solid var(--line);border-radius: 16px;background: rgba(255,255,255,.04);text-align: center;}
+.faq-empty strong {font-size: 15px;}
+.faq-empty p {margin: 10px 0 16px;color: var(--muted);font-size: 13px;}
 .faq-tabs {display: flex;flex-wrap: wrap;gap: 8px;margin-top: 20px;}
 .faq-tabs a {font-size: 12px;padding-inline: 12px;}
 .faq-list {min-width: 0;}
@@ -176,6 +188,9 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .final-cta {text-align: center;background: radial-gradient(ellipse at 50% 95%,rgba(182,120,232,.2),transparent 60%),#1c152d;}
 .final-cta p:not(.section-kicker) {color: var(--muted);font-size: 14px;}
 .final-cta .actions {justify-content: center;margin-top: 20px;}
+.back-to-top {position: fixed;right: 20px;bottom: calc(20px + env(safe-area-inset-bottom,0px));z-index: 45;display: inline-flex;align-items: center;gap: 8px;min-height: 45px;padding: 9px 17px;border: 1px solid rgba(253,212,243,.45);border-radius: 40px;background: rgba(39,28,60,.96);color: #fff4ff;text-decoration: none;font-size: 13px;font-weight: 840;box-shadow: 0 8px 32px rgba(0,0,0,.35);backdrop-filter: blur(10px);}
+.back-to-top span {font-size: 19px;line-height: 1;}
+.back-to-top:hover {background: #4a325e;color: #fff;}
 .site-footer {padding: 36px 0;border-top: 1px solid var(--line);}
 .footer-inner {display: flex;flex-wrap: wrap;justify-content: space-between;gap: 27px;}
 .footer-brand {font-weight: 850;}
@@ -237,6 +252,8 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   .trouble-item {padding-left: 62px;}
   .trouble-item::before {left: 22px;}
   .faq-item summary {font-size: 15px;}
+  .faq-search {padding: 15px;}
+  .back-to-top {right: 12px;bottom: calc(13px + env(safe-area-inset-bottom,0px));}
   .legal-card summary {font-size: 16px;}
   .legal-card > p,.legal-card > ul {font-size: 14px;}
   .admin-note {padding: 17px 18px;}
@@ -249,14 +266,18 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 @media print {
   html {scroll-behavior: auto;}
   body {background: #fff;color: #111;font-size: 11pt;}
-  .site-header,.mobile-nav,.nav,.skip-link,.hero-image,.hero-foot,.actions,.guide-nav,.faq-tabs,.copy-button,.final-cta,.site-footer {display: none!important;}
+  .site-header,.mobile-nav,.nav,.skip-link,.hero-image,.hero-foot,.actions,.guide-nav,.faq-tabs,.faq-search,.faq-empty,.copy-button,.back-to-top,.final-cta,.site-footer {display: none!important;}
   .wrap {width: 100%;}
   .hero {min-height: auto;padding: 12pt 0;background: #fff;}
+  main section:not(.hero) {background: #fff!important;border: 0!important;}
+  .brand-story,.overview,.system,.faq,.troubleshooting,.tips-section {background: #fff!important;}
   .hero::before {display: none;}
   .hero-lead,.hero-note,h1,h2,h3,h4,.section-intro {color: #111!important;}
   main section:not(.hero) {padding: 18pt 0;}
   .panel,.brand-story,.legal-card {background: #fff!important;border: 1px solid #ccc;break-inside: avoid;}
-  .panel p,.brand-story p,.feature-use,.section-intro,.section-note {color: #222!important;}
+  .panel p,.brand-story p,.feature-use,.section-intro,.section-note,.tip-example,.sample,.faq-search-status,.footer-tagline {color: #222!important;}
+  .section-kicker,.feature-num,.example-num,.tip-number,.faq-category,.faq-item summary,.legal-card summary,.legal-card h4 {color: #111!important;}
+  .panel,.sample,.tip-example {background: #fff!important;box-shadow: none!important;}
   .faq-item p,.legal-card > p,.legal-card > ul {color: #222!important;}
   .faq-list details:not([open]) p,.legal-card:not([open]) > :not(summary) {display: block!important;}
 }
@@ -336,7 +357,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   <p class="section-note">この案内は一般的な確認手順です。障害を自動診断・復旧する機能ではありません。</p>
 </div></section>
 <section class="faq" id="faq" aria-labelledby="faq-title"><div class="wrap faq-grid">
-  <div class="section-head"><p class="section-kicker">FREQUENTLY ASKED QUESTIONS</p><h2 id="faq-title">よくある質問。</h2><p class="section-intro">利用方法、検索、記憶、料金、プライバシーなどについて、質問を押すと回答を読むことができます。</p><p class="faq-hint">カテゴリから探すか、質問を選んで回答を開いてください。</p><nav class="faq-tabs" aria-label="FAQのカテゴリ"><a href="#faq-start">利用・回答</a><a href="#faq-memory">メモリ・情報</a><a href="#faq-setup">設定・トラブル</a></nav></div>
+  <div class="section-head"><p class="section-kicker">FREQUENTLY ASKED QUESTIONS</p><h2 id="faq-title">よくある質問。</h2><p class="section-intro">利用方法、検索、記憶、料金、プライバシーなどについて、質問を押すと回答を読むことができます。</p><p class="faq-hint">カテゴリ別の一覧に加え、質問・回答内の言葉で探せます。</p><form class="faq-search" role="search" hidden><label for="faq-search-input">キーワードで質問を探す</label><div class="faq-search-row"><input id="faq-search-input" name="faq-search" type="search" autocomplete="off" placeholder="例：メモリ、料金、権限"><button type="button" class="faq-clear">クリア</button></div><p class="faq-search-status" id="faq-search-status" role="status" aria-live="polite" hidden></p></form><nav class="faq-tabs" aria-label="FAQのカテゴリ"><a href="#faq-start">利用・回答</a><a href="#faq-memory">メモリ・情報</a><a href="#faq-setup">設定・トラブル</a></nav></div>
   <div class="faq-list"><div class="faq-category-group"><h3 class="faq-category" id="faq-start"><span>01</span>はじめての利用と回答</h3><details class="faq-item"><summary>初めて使うには何が必要ですか？</summary><p>Discordアカウントと、Botが利用できるサーバー・チャンネルが必要です。自分のサーバーへ追加する場合は、必要な管理権限も必要です。まずは上の導入方法をご確認ください。</p></details>
 <details class="faq-item"><summary>どのような質問ができますか？</summary><p>説明、相談、文章作成、アイデア出し、情報整理などを依頼できます。具体的な条件や希望する答え方を添えると、回答を調整しやすくなります。</p></details>
 <details class="faq-item"><summary>AIの回答はいつでも正確ですか？</summary><p>いいえ。誤り、古い情報、誤解が含まれる場合があります。重大な決定や専門的な問題については、公式資料や専門家で確認してください。</p></details>
@@ -352,7 +373,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 <details class="faq-item"><summary>Botが反応しない場合は？</summary><p>オンライン状態、チャンネル権限、呼びかけ方、外部サービスの障害や利用枠を順に確認してください。詳しくは「困ったとき」の案内をご覧ください。</p></details>
 <details class="faq-item"><summary>ニュースや音声機能は誰でも利用できますか？</summary><p>ニュース・音声関連の機構がありますが、使用できる機能や操作はサーバー設定・Botの稼働・外部サービスの利用条件によって異なります。</p></details>
 <details class="faq-item"><summary>スラッシュコマンドはどこで確認できますか？</summary><p>Discordの入力欄で「/」を入力すると、権限や環境に応じたコマンド候補を確認できます。サイトでは未確認のコマンド一覧を固定していません。</p></details>
-<details class="faq-item"><summary>このBotはDiscord公式のサービスですか？</summary><p>いいえ。ちるたいむBotは個人開発のDiscord向けBotで、Discordや外部AI事業者の公式製品ではありません。</p></details></div></div>
+<details class="faq-item"><summary>このBotはDiscord公式のサービスですか？</summary><p>いいえ。ちるたいむBotは個人開発のDiscord向けBotで、Discordや外部AI事業者の公式製品ではありません。</p></details></div><div class="faq-empty" id="faq-empty" hidden><strong>一致する質問が見つかりませんでした。</strong><p>別の言葉を入力するか、検索をクリアして一覧をご確認ください。</p><button type="button" class="faq-reset">すべての質問を表示</button></div></div>
 </div></section>
 <section class="legal-section" id="legal" aria-labelledby="legal-title">
       <div class="wrap">
@@ -473,39 +494,54 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
     </section>
 <section class="final-cta" aria-labelledby="final-title"><div class="wrap"><p class="section-kicker">READY WHEN YOU ARE</p><h2 id="final-title">いつものサーバーに、<br>ちるたいむBotを。</h2><p>まず導入手順と権限を確認し、利用できる機能からお試しください。</p><div class="actions"><a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1504043011884187659&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer">Discordの導入画面を開く ↗</a><a class="button secondary" href="#top">ページ先頭へ ↑</a></div></div></section>
 </main>
+<a class="back-to-top" href="#top" hidden aria-label="ページの先頭へ戻る"><span aria-hidden="true">↑</span>先頭へ</a>
 <footer class="site-footer"><div class="wrap footer-inner"><div><div class="footer-brand">✦ ちるたいむBot</div><span class="footer-tagline">ちょっと一息、ちるたいむ。</span><small>個人開発のDiscord向けAI Bot · 開発・改善中<br>運営者：いちごみるく · © 2026 ちるたいむBot</small></div><nav class="footer-links" aria-label="フッターリンク"><a href="#features">機能</a><a href="#tips">質問のコツ</a><a href="#troubleshooting">困ったとき</a><a href="#faq">FAQ</a><a href="#terms">利用規約</a><a href="#privacy">プライバシー</a><a href="#disclaimer">免責事項</a><a href="#operator">運営者情報</a><a href="#top">トップへ戻る</a></nav></div></footer>
 <script>
 "use strict";
 (() => {
+  // Every enhanced control has a useful non-JavaScript fallback.
   const menu = document.querySelector(".mobile-nav details");
   if (menu) {
     menu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => { menu.open = false; });
     });
+    document.addEventListener("pointerdown", (event) => {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.open) {
+        menu.open = false;
+        menu.querySelector("summary")?.focus();
+      }
+    });
   }
-  const revealLinkedPolicy = () => {
+
+  // Opening an anchor-linked policy happens before the user reads it.
+  const openLinkedDetails = () => {
     if (!window.location.hash) return;
-    const fragment = window.location.hash.slice(1);
     let id;
-    try { id = decodeURIComponent(fragment); } catch { return; }
+    try { id = decodeURIComponent(window.location.hash.slice(1)); }
+    catch { return; }
     const target = document.getElementById(id);
-    if (target && target.tagName === "DETAILS") target.open = true;
+    if (target?.tagName === "DETAILS") target.open = true;
   };
-  window.addEventListener("hashchange", revealLinkedPolicy);
-  revealLinkedPolicy();
-  const status = document.getElementById("copy-announcement");
-  document.querySelectorAll(".copy-button").forEach((button) => {
-    const card = button.closest(".example-card");
-    const example = card && card.querySelector(".sample");
+  window.addEventListener("hashchange", openLinkedDetails);
+  openLinkedDetails();
+
+  const copyStatus = document.getElementById("copy-announcement");
+  const copyButtons = [...document.querySelectorAll(".copy-button")];
+  copyButtons.forEach((button) => {
+    const example = button.closest(".example-card")?.querySelector(".sample");
     if (!example) return;
     button.hidden = false;
     button.addEventListener("click", async () => {
+      copyButtons.forEach((other) => { other.textContent = "例文をコピー"; });
       const content = example.textContent.trim();
       try {
-        if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error("clipboard unavailable");
+        if (!navigator.clipboard?.writeText) throw new Error("Clipboard API unavailable");
         await navigator.clipboard.writeText(content);
-        button.textContent = "コピー済み ✓";
-        if (status) status.textContent = "メッセージ例をコピーしました。";
+        button.textContent = "コピーしました ✓";
+        if (copyStatus) copyStatus.textContent = "例文をクリップボードにコピーしました。";
       } catch {
         const selection = window.getSelection();
         if (selection) {
@@ -515,24 +551,101 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
           selection.addRange(range);
         }
         button.textContent = "文章を選択";
-        if (status) status.textContent = "コピーできませんでした。選択した文章をコピーしてください。";
+        if (copyStatus) copyStatus.textContent = "自動コピーできませんでした。選択された文章をコピーしてください。";
       }
     });
   });
 
-  // Preserve access to the full policy and FAQ text when printing or saving as PDF.
-  const expandedForPrint = [];
+  // Search both FAQ questions and answers, without sending typed text anywhere.
+  const searchForm = document.querySelector(".faq-search");
+  const searchInput = document.getElementById("faq-search-input");
+  const searchStatus = document.getElementById("faq-search-status");
+  const emptyMessage = document.getElementById("faq-empty");
+  const faqGroups = [...document.querySelectorAll(".faq-category-group")];
+  const faqNav = document.querySelector(".faq-tabs");
+  const normalize = (value) => value.normalize("NFKC").toLocaleLowerCase("ja").trim();
+  let faqQuery = "";
+  const renderFaq = () => {
+    let count = 0;
+    faqGroups.forEach((group) => {
+      let groupCount = 0;
+      group.querySelectorAll(".faq-item").forEach((item) => {
+        const visible = !faqQuery || normalize(item.textContent).includes(faqQuery);
+        item.hidden = !visible;
+        if (visible) groupCount++;
+      });
+      group.hidden = groupCount === 0;
+      count += groupCount;
+    });
+    if (faqNav) faqNav.hidden = Boolean(faqQuery);
+    if (searchStatus) {
+      searchStatus.hidden = !faqQuery;
+      searchStatus.textContent = faqQuery ? count + "件の質問が見つかりました。" : "";
+    }
+    if (emptyMessage) emptyMessage.hidden = count !== 0;
+  };
+  if (searchForm && searchInput && faqGroups.length) {
+    searchForm.hidden = false;
+    searchForm.addEventListener("submit", (event) => event.preventDefault());
+    searchInput.addEventListener("input", () => {
+      faqQuery = normalize(searchInput.value);
+      renderFaq();
+    });
+    const reset = () => {
+      searchInput.value = "";
+      faqQuery = "";
+      renderFaq();
+      searchInput.focus();
+    };
+    searchForm.querySelector(".faq-clear")?.addEventListener("click", reset);
+    emptyMessage?.querySelector(".faq-reset")?.addEventListener("click", reset);
+    searchInput.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && searchInput.value) {
+        event.preventDefault();
+        reset();
+      }
+    });
+  }
+
+  // Return to the first screen on long mobile and desktop pages.
+  const backToTop = document.querySelector(".back-to-top");
+  if (backToTop) {
+    let scrollQueued = false;
+    const updateReturnLink = () => {
+      backToTop.hidden = window.scrollY < 900;
+      scrollQueued = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (!scrollQueued) {
+        scrollQueued = true;
+        window.requestAnimationFrame(updateReturnLink);
+      }
+    }, {passive: true});
+    updateReturnLink();
+  }
+
+  // Printing should include every FAQ and policy, even during a filtered search.
+  const temporarilyOpened = [];
+  const temporarilyUnhidden = [];
   window.addEventListener("beforeprint", () => {
-    document.querySelectorAll("details").forEach((details) => {
-      if (!details.open) {
-        expandedForPrint.push(details);
-        details.open = true;
+    document.querySelectorAll(".faq-item, .faq-category-group").forEach((element) => {
+      if (element.hidden) {
+        temporarilyUnhidden.push(element);
+        element.hidden = false;
+      }
+    });
+    document.querySelectorAll("details").forEach((element) => {
+      if (!element.open) {
+        temporarilyOpened.push(element);
+        element.open = true;
       }
     });
   });
   window.addEventListener("afterprint", () => {
-    expandedForPrint.forEach((details) => { details.open = false; });
-    expandedForPrint.length = 0;
+    temporarilyOpened.forEach((element) => { element.open = false; });
+    temporarilyOpened.length = 0;
+    temporarilyUnhidden.forEach((element) => { element.hidden = true; });
+    temporarilyUnhidden.length = 0;
   });
 })();
 </script>
