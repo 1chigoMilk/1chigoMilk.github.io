@@ -34,7 +34,7 @@ body {margin: 0;background: var(--bg);color: var(--text);font-family: -apple-sys
 img {max-width: 100%;}
 a {color: var(--accent);text-underline-offset: 4px;}
 a:hover {color: var(--pink);}
-a:focus-visible, button:focus-visible, summary:focus-visible {outline: 3px solid var(--pink);outline-offset: 4px;border-radius: 5px;}
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {outline: 3px solid var(--pink);outline-offset: 4px;border-radius: 5px;}
 button {font: inherit;}
 [id] {scroll-margin-top: 105px;}
 .wrap {width: min(var(--content-width),calc(100% - 48px));margin-inline: auto;}
@@ -102,7 +102,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .brand-story strong {color: #fff4ff;}
 .guide-nav {display: flex;flex-wrap: wrap;align-items: center;gap: 10px;margin-top: 21px;padding: 18px 20px;border: 1px solid var(--line);border-radius: 17px;background: rgba(255,255,255,.035);}
 .guide-nav span {font-weight: 850;font-size: 12px;color: var(--pink);margin-right: 4px;}
-.guide-nav a,.faq-tabs a {display: inline-flex;align-items: center;justify-content: center;min-height: 38px;padding: 6px 13px;border: 1px solid var(--line);border-radius: 50px;text-decoration: none;font-weight: 750;font-size: 13px;color: #f4eaff;background: rgba(255,255,255,.025);}
+.guide-nav a,.faq-tabs a {display: inline-flex;align-items: center;justify-content: center;min-height: 44px;padding: 6px 13px;border: 1px solid var(--line);border-radius: 50px;text-decoration: none;font-weight: 750;font-size: 13px;color: #f4eaff;background: rgba(255,255,255,.025);}
 .guide-nav a:hover,.faq-tabs a:hover {background: rgba(255,255,255,.1);}
 .feature-card .feature-num {margin-bottom: 19px;}
 .feature-card ul {padding-left: 1.3em;margin: 15px 0 0;color: #e0d6f1;font-size: 13px;}
@@ -151,13 +151,13 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .faq-search {margin-top: 18px;padding: 20px;border: 1px solid var(--line-hover);border-radius: 17px;background: rgba(255,255,255,.045);}
 .faq-search label {display: block;margin-bottom: 10px;font-size: 13px;font-weight: 830;color: #f7ebff;}
 .faq-search-row {display: flex;gap: 9px;align-items: stretch;}
-.faq-search input {width: 100%;min-width: 0;min-height: 46px;padding: 10px 14px;background: #130f24;color: var(--text);border: 1px solid var(--line-hover);border-radius: 11px;font: inherit;font-size: 14px;appearance: auto;}
+.faq-search input {width: 100%;min-width: 0;min-height: 46px;padding: 10px 14px;background: #130f24;color: var(--text);border: 1px solid var(--line-hover);border-radius: 11px;font: inherit;font-size: 16px;appearance: auto;}
 .faq-search input::placeholder {color: #afa3c5;}
 .faq-search button,.faq-reset {min-height: 46px;cursor: pointer;border: 1px solid var(--line-hover);border-radius: 11px;background: #342749;color: var(--text);padding: 10px 15px;font-size: 13px;font-weight: 800;white-space: nowrap;}
 .faq-search button:hover,.faq-reset:hover {background: #48315e;}
 .faq-suggestions {display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:13px;}
 .faq-suggestions span {font-size:12px;color:var(--subtle);margin-right:4px;}
-.faq-suggestions button {min-height:36px;padding:6px 11px;border:1px solid var(--line);border-radius:30px;background:rgba(255,255,255,.045);color:#f5ecff;font-size:12px;font-weight:760;cursor:pointer;}
+.faq-suggestions button {min-height:44px;padding:6px 11px;border:1px solid var(--line);border-radius:30px;background:rgba(255,255,255,.045);color:#f5ecff;font-size:12px;font-weight:760;cursor:pointer;}
 .faq-suggestions button:hover {background:rgba(255,255,255,.1);}
 .faq-search-status {margin: 12px 0 0;color: var(--muted);font-size: 13px;}
 .faq-empty {padding: 24px;border: 1px solid var(--line);border-radius: 16px;background: rgba(255,255,255,.04);text-align: center;}
@@ -179,7 +179,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .faq-item p {margin: 0 14px 19px 0;color: var(--muted);font-size: 14px;}
 .legal-section {background: #110e20;}
 .legal-index {display: flex;flex-wrap: wrap;gap: 9px;margin-bottom: 24px;}
-.legal-index a {display: inline-flex;align-items: center;min-height: 38px;padding: 7px 13px;border: 1px solid var(--line);border-radius: 40px;color: #eadfff;font-size: 12px;font-weight: 800;text-decoration: none;}
+.legal-index a {display: inline-flex;align-items: center;min-height: 44px;padding: 7px 13px;border: 1px solid var(--line);border-radius: 40px;color: #eadfff;font-size: 12px;font-weight: 800;text-decoration: none;}
 .legal-index a:hover {background: rgba(255,255,255,.08);}
 .legal-grid {display: grid;grid-template-columns: repeat(2,minmax(0,1fr));gap: 14px;align-items: start;}
 .legal-card {min-width: 0;padding: 0 22px;border: 1px solid var(--line);border-radius: 17px;background: #221b36;}
@@ -241,7 +241,12 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   .hero-foot {bottom: 19px;}
   main section:not(.hero) {padding: 67px 0;}
   .section-head {margin-bottom: 27px;}
-  .section-intro {font-size: 14px;}
+  .section-intro {font-size: 15px;}
+  .overview-card p,.feature-card p,.trust-card p,.step p,.example-card p,.tip-card p,.trouble-item p,.flow-step p,.faq-item p,.admin-note p {font-size: 15px;}
+  .hero-note,.section-note,.legal-warning {font-size: 13px;}
+  .faq-search-row {gap: 7px;}
+  .faq-search .faq-clear {padding-inline: 12px;}
+  .faq-suggestions span {width: 100%;}
   .overview-grid,.features-grid,.steps-grid,.examples-grid,.flow-grid,.legal-grid {grid-template-columns: 1fr;}
   .overview-grid .overview-card:last-child {grid-column: auto;}
   .panel {padding: 23px;}
@@ -531,17 +536,23 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
     });
   }
 
-  // Opening an anchor-linked policy happens before the user reads it.
-  const openLinkedDetails = () => {
-    if (!window.location.hash) return;
+  // Opening the target before navigation also handles repeated taps on the same fragment.
+  const revealFragment = (fragment) => {
+    if (!fragment) return;
     let id;
-    try { id = decodeURIComponent(window.location.hash.slice(1)); }
-    catch { return; }
+    try { id = decodeURIComponent(fragment); } catch { return; }
     const target = document.getElementById(id);
-    if (target?.tagName === "DETAILS") target.open = true;
+    if (target && target.tagName === "DETAILS") target.open = true;
   };
-  window.addEventListener("hashchange", openLinkedDetails);
-  openLinkedDetails();
+  document.addEventListener("click", (event) => {
+    const node = event.target && event.target.nodeType === 1 ? event.target : event.target?.parentElement;
+    const anchor = node?.closest?.('a[href^="#"]');
+    if (!anchor) return;
+    const href = anchor.getAttribute("href");
+    if (href && href.length > 1) revealFragment(href.slice(1));
+  });
+  window.addEventListener("hashchange", () => revealFragment(window.location.hash.slice(1)));
+  revealFragment(window.location.hash.slice(1));
 
   const copyStatus = document.getElementById("copy-announcement");
   const copyButtons = [...document.querySelectorAll(".copy-button")];
