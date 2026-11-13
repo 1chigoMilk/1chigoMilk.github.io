@@ -97,6 +97,12 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .overview-card .eyeline,.feature-num,.example-num,.tip-number {display: block;color: var(--accent);font-size: 11px;font-weight: 860;letter-spacing: .1em;}
 .overview-card h3,.feature-card h3,.trust-card h3 {margin: 11px 0;font-size: 18px;}
 .overview-card p,.feature-card p,.trust-card p {margin: 0;color: var(--muted);font-size: 14px;line-height: 1.95;}
+.safety-check {margin-top:23px;padding:23px 26px;border:1px solid rgba(252,207,238,.3);border-radius:17px;background:rgba(251,214,244,.055);}
+.safety-check h3 {margin:0 0 12px;font-size:19px;}
+.safety-check ul {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;list-style:none;padding:0;margin:0;}
+.safety-check li {padding:13px 15px;border:1px solid var(--line);border-radius:10px;font-size:14px;color:var(--muted);}
+.safety-check li::before {content:"✓";font-weight:900;color:var(--pink);margin-right:8px;}
+.safety-check p {font-size:13px;margin:14px 0 0;color:#e7dbee;}
 .text-link {display: inline-block;margin-top: 16px;font-size: 13px;font-weight: 800;text-decoration: none;}
 .audience-guide {margin-top:24px;padding:26px;border:1px solid var(--line-hover);border-radius:20px;background:linear-gradient(145deg,rgba(73,51,107,.29),rgba(28,22,49,.6));}
 .audience-intro {max-width:790px;margin-bottom:20px;}
@@ -119,10 +125,18 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .guide-nav span {font-weight: 850;font-size: 12px;color: var(--pink);margin-right: 4px;}
 .guide-nav a,.faq-tabs a {display: inline-flex;align-items: center;justify-content: center;min-height: 44px;padding: 6px 13px;border: 1px solid var(--line);border-radius: 50px;text-decoration: none;font-weight: 750;font-size: 13px;color: #f4eaff;background: rgba(255,255,255,.025);}
 .guide-nav a:hover,.faq-tabs a:hover {background: rgba(255,255,255,.1);}
+.feature-index {display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:0 0 24px;padding:17px 19px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035);}
+.feature-index span {color:var(--pink);font-weight:820;font-size:12px;margin-right:6px;}
+.feature-index a {display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1px solid var(--line);border-radius:30px;padding:7px 13px;color:#f5eaff;font-size:13px;font-weight:750;text-decoration:none;}
+.feature-index a:hover {background:rgba(255,255,255,.09);}
 .feature-card .feature-num {margin-bottom: 19px;}
 .feature-card ul {padding-left: 1.3em;margin: 15px 0 0;color: #e0d6f1;font-size: 13px;}
 .feature-card li + li {margin-top: 5px;}
 .feature-use {margin-top: 17px!important;padding-top: 16px;border-top: 1px solid var(--line);color: #e9d7fa!important;font-size: 13px!important;}
+.feature-subhead {margin:18px 0 7px;font-size:13px;font-weight:850;color:#efe4ff;}
+.feature-card .feature-use strong,.feature-limit strong {display:block;margin-bottom:5px;color:var(--pink);font-size:12px;}
+.feature-limit {margin-top:13px!important;padding:12px 14px;border-radius:10px;background:rgba(255,209,239,.055);color:var(--muted)!important;font-size:13px!important;border:1px solid var(--line);}
+.feature-card {scroll-margin-top:102px;}
 .steps-grid {display: grid;grid-template-columns: repeat(4,minmax(0,1fr));gap: 17px;}
 .step {padding: 22px 13px 0 0;border-top: 2px solid rgba(194,166,246,.48);}
 .step strong {font-size: 11px;letter-spacing: .12em;color: var(--pink);}
@@ -134,10 +148,15 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .admin-note {margin-top: 21px;padding: 18px 22px;border-left: 3px solid var(--accent);border-radius: 0 12px 12px 0;background: rgba(199,170,255,.07);}
 .admin-note h3 {font-size: 16px;margin: 0 0 8px;}
 .admin-note p {margin: 0;color: var(--muted);font-size: 14px;}
+.admin-checklist {list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.admin-checklist li {padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted);font-size:13px;}
+.admin-checklist strong {color:var(--pink);}
 .examples-grid,.flow-grid,.tips-grid,.trouble-grid,.trust-grid {display: grid;grid-template-columns: repeat(2,minmax(0,1fr));gap: 16px;}
 .example-num,.tip-number {margin-bottom: 12px;}
 .example-card h3 {margin: 0 0 12px;font-size: 17px;}
 .example-card p {margin: 13px 0 0;color: var(--muted);font-size: 14px;}
+.example-card .example-refine {margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:#e4d7f2;}
+.example-refine strong {display:block;font-size:12px;color:var(--pink);margin-bottom:3px;}
 .example-action {display: flex;align-items: start;gap: 9px;}
 .sample {display: block;flex: 1;min-width: 0;padding: 13px 14px;border: 1px solid var(--line);border-radius: 11px;background: rgba(9,8,21,.55);color: #f7efff;overflow-wrap: anywhere;font: inherit;font-size: 13px;line-height: 1.9;white-space: normal;user-select: text;}
 .copy-button {flex: none;align-self: stretch;max-width: 120px;padding: 10px 12px;border: 1px solid var(--line-hover);border-radius: 11px;background: #37274c;color: #ffecff;font-size: 12px;font-weight: 800;cursor: pointer;}
@@ -159,6 +178,8 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .conversation-caution {margin:18px 0 0;font-size:13px;color:var(--subtle);}
 .system-grid {display: grid;grid-template-columns: .95fr 1.05fr;gap: 36px;align-items: start;}
 .system-copy > p:not(.section-kicker) {font-size: 15px;color: var(--muted);}
+.system-copy strong {color:#f5e9ff;}
+.system-copy .system-action {margin-top:18px;padding:13px 16px;border-left:3px solid var(--accent);background:rgba(255,255,255,.035);border-radius:0 10px 10px 0;}
 .flow-step strong {display: block;font-size: 11px;color: var(--pink);margin-bottom: 5px;}
 .flow-step h3 {font-size: 16px;margin: 0 0 7px;}
 .flow-step p {font-size: 14px;color: var(--muted);margin: 0;}
@@ -166,6 +187,15 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .tech-info summary {padding: 15px 0;font-size: 14px;font-weight: 800;cursor: pointer;}
 .tech-info p {margin: 0 0 17px;color: var(--muted);font-size: 13px;}
 .tips-section {background: radial-gradient(ellipse at 100% 0%,rgba(152,98,217,.12),transparent 44%),var(--bg);}
+.prompt-pattern {margin-top:23px;padding:24px 27px;border:1px solid var(--line-hover);border-radius:18px;background:rgba(65,43,101,.22);}
+.prompt-pattern h3 {margin:4px 0 9px;font-size:clamp(19px,2vw,23px);}
+.prompt-pattern > div > p:last-child {color:var(--muted);font-size:14px;margin:0;}
+.prompt-parts {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0;}
+.prompt-parts > div {padding:14px;border:1px solid var(--line);border-radius:11px;background:rgba(19,13,35,.48);}
+.prompt-parts dt {font-size:13px;color:var(--pink);font-weight:850;}
+.prompt-parts dd {font-size:13px;color:var(--muted);margin:5px 0 0;}
+.prompt-full-example {margin:0;padding:15px 17px;border:1px solid var(--line);border-radius:12px;background:rgba(13,9,27,.65);font-size:14px;color:#f4eaff;}
+.prompt-full-example strong {color:var(--pink);}
 .tip-card h3 {margin: 0 0 11px;font-size: 18px;}
 .tip-card p {margin: 0;color: var(--muted);font-size: 14px;}
 .tip-example {margin-top: 16px;padding: 13px 14px;border: 1px solid var(--line);border-radius: 11px;background: rgba(12,9,27,.65);color: #f5eaff;font-size: 13px;}
@@ -227,10 +257,20 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .faq-item[open] summary::after {content: "−";}
 .faq-item[open] summary {color: var(--pink);}
 .faq-item p {margin: 0 14px 19px 0;color: var(--muted);font-size: 14px;}
+.faq-item .faq-extra {margin-top:-10px;margin-bottom:17px;padding:12px 14px;border-radius:10px;background:rgba(238,208,255,.05);font-size:13px;}
+.faq-extra strong {color:var(--pink);}
 .faq-item .faq-related {display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin-top:-6px!important;padding-bottom:2px;color:var(--subtle);font-size:12px;}
 .faq-related span {font-size:11px;font-weight:800;letter-spacing:.025em;}
 .faq-related a {font-size:12px;font-weight:850;text-decoration:underline;}
 .legal-section {background: #110e20;}
+.legal-primer {padding:21px 24px;margin:0 0 22px;border:1px solid var(--line-hover);border-radius:17px;background:rgba(255,255,255,.025);}
+.legal-primer h3 {margin:0 0 15px;font-size:18px;}
+.legal-primer-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.legal-primer-grid a {display:flex;flex-direction:column;gap:7px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03);text-decoration:none;}
+.legal-primer-grid a:hover {background:rgba(255,255,255,.075);}
+.legal-primer-grid strong {font-size:14px;color:#f6edff;}
+.legal-primer-grid span {font-size:13px;color:var(--muted);}
+.legal-primer > p {margin:15px 0 0;font-size:12px;color:var(--subtle);}
 .legal-index {display: flex;flex-wrap: wrap;gap: 9px;margin-bottom: 24px;}
 .legal-index a {display: inline-flex;align-items: center;min-height: 44px;padding: 7px 13px;border: 1px solid var(--line);border-radius: 40px;color: #eadfff;font-size: 12px;font-weight: 800;text-decoration: none;}
 .legal-index a:hover {background: rgba(255,255,255,.08);}
@@ -272,13 +312,14 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   .features-grid {grid-template-columns: repeat(2,minmax(0,1fr));}
   .conversation-grid,.report-guide dl {grid-template-columns:1fr;}
   .steps-grid {grid-template-columns: repeat(2,minmax(0,1fr));gap: 23px;}
+  .admin-checklist,.safety-check ul,.prompt-parts,.legal-primer-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
   .system-grid,.faq-grid {grid-template-columns: 1fr;gap: 28px;}
   .overview-grid {grid-template-columns: repeat(2,minmax(0,1fr));}
   .overview-grid .overview-card:last-child {grid-column: 1/-1;}
 }
 @media (max-width:740px) {
   .hero::before {background: linear-gradient(90deg,rgba(13,10,29,.93),rgba(13,10,29,.57)),linear-gradient(0deg,rgba(16,13,30,.98),transparent 55%);}
-  .trust-grid,.tips-grid,.trouble-grid,.audience-grid,.symptom-links {grid-template-columns: 1fr;}
+  .trust-grid,.tips-grid,.trouble-grid,.audience-grid,.symptom-links,.admin-checklist,.safety-check ul,.prompt-parts,.legal-primer-grid {grid-template-columns: 1fr;}
   .mobile-links {max-height: 70vh;}
 }
 @media (max-width:620px) {
@@ -305,6 +346,11 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   .overview-grid,.features-grid,.steps-grid,.examples-grid,.flow-grid,.legal-grid {grid-template-columns: 1fr;}
   .overview-grid .overview-card:last-child {grid-column: auto;}
   .panel {padding: 23px;}
+  .feature-index {padding:14px;}
+  .feature-index > span {width:100%;}
+  .feature-index a {font-size:13px;}
+  .admin-checklist li,.safety-check li {font-size:14px;}
+  .safety-check,.prompt-pattern,.legal-primer {padding:19px;}
   .audience-guide,.conversation-guide,.report-guide {padding:19px;}
   .audience-card {padding:18px;}
   .audience-card ol,.conversation-head p,.symptom-guide > p {font-size:15px;}
@@ -352,7 +398,9 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
  .hero {min-height:0!important;padding:12pt 0 17pt!important;background:#fff!important;}
  .hero::before {display:none!important;}
  main section:not(.hero) {padding:13pt 0!important;background:#fff!important;border:0!important;}
- .overview-grid,.features-grid,.steps-grid,.examples-grid,.flow-grid,.trust-grid,.tips-grid,.trouble-grid,.legal-grid,.audience-grid,.conversation-grid,.symptom-links,.report-guide dl {display:block!important;}
+ .overview-grid,.features-grid,.steps-grid,.examples-grid,.flow-grid,.trust-grid,.tips-grid,.trouble-grid,.legal-grid,.audience-grid,.conversation-grid,.symptom-links,.report-guide dl,.admin-checklist,.safety-check ul,.prompt-parts,.legal-primer-grid {display:block!important;}
+ .feature-index {display:none!important;}
+ .feature-limit,.feature-use,.example-refine,.system-action,.safety-check,.prompt-pattern,.legal-primer,.faq-extra {background:#fff!important;color:#222!important;border-color:#ccc!important;}
  .audience-guide,.audience-card,.conversation-guide,.conversation-grid li,.symptom-guide,.symptom-links a,.report-guide {background:#fff!important;color:#111!important;box-shadow:none!important;border-color:#ccc!important;}
  .audience-card,.conversation-grid li,.symptom-links a,.report-guide dl > div {break-inside:avoid;}
  .audience-intro p,.audience-card ol,.conversation-head p,.conversation-grid p,.conversation-grid small,.conversation-caution,.symptom-guide > p,.symptom-links strong,.symptom-links span,.report-guide p,.report-guide dd,.report-guide dt {color:#222!important;}
@@ -406,32 +454,66 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 <nav class="guide-nav" aria-label="目的別に内容を探す"><span>目的から探す</span><a href="#features">できること</a><a href="#how-to">導入方法</a><a href="#examples">使い方の例</a><a href="#tips">質問のコツ</a><a href="#troubleshooting">困ったとき</a><a href="#faq">FAQ</a></nav>
 </div></section>
 <section id="features" aria-labelledby="features-title"><div class="wrap">
-  <div class="section-head"><p class="section-kicker">FEATURES</p><h2 id="features-title">ちるたいむBotで、できること。</h2><p class="section-intro">「機能の名前」だけでなく、どんな場面で役立つか、どんな制限があるかまで説明します。</p></div>
-  <div class="features-grid"><article class="panel feature-card"><span class="feature-num">01 / 会話・相談</span><h3>AIチャット</h3><p>分からないことの説明、会話の相手、文章の下書き、アイデアの整理などをDiscordの中で気軽に依頼できます。難しい内容も「初心者向けに」と指定して説明を調整できます。</p><ul><li>質問の意味をかみ砕いて説明</li><li>文章の作成・言い換え・要約</li><li>相談内容の整理と選択肢の検討</li></ul><p class="feature-use">たとえば：新しいゲームの遊び方を短く教えてほしいとき</p></article>
-<article class="panel feature-card"><span class="feature-num">02 / 情報を調べる</span><h3>Web検索と出典</h3><p>必要に応じて外部情報を参照し、調べものの手助けをします。検索していない回答や、根拠が不十分な内容があり得るため、出典が付いた場合も元のページを確認してください。</p><ul><li>情報を調べて要点を整理</li><li>複数の情報を比較する相談</li><li>参照元が示された場合に原文を確認</li></ul><p class="feature-use">たとえば：最近発表されたサービスの情報を確かめたいとき</p></article>
-<article class="panel feature-card"><span class="feature-num">03 / 話題をつなぐ</span><h3>会話履歴の活用</h3><p>直近のやり取りを踏まえた応答を目指す仕組みです。前の発言に続けて質問したり、回答の長さや説明の難しさを調整したりできます。参照できる範囲には制限があります。</p><ul><li>前の話題への追加質問</li><li>回答の再説明や条件の変更</li><li>会話の流れに沿った整理</li></ul><p class="feature-use">たとえば：さっきの説明をもう少し短くしてほしいとき</p></article>
-<article class="panel feature-card"><span class="feature-num">04 / 必要な情報を参照</span><h3>AIメモリ</h3><p>会話を補助するため、利用が許可された情報を参照する仕組みです。サーバーで共有する情報と個人に関わる情報は扱う範囲が異なり、利用できる管理機能は権限・設定によって変わります。</p><ul><li>登録済みの情報を会話に活用</li><li>利用範囲と権限を区別</li><li>対応する管理画面から情報を扱う機構</li></ul><p class="feature-use">たとえば：サーバー内で共有している案内を参照したいとき</p></article>
-<article class="panel feature-card"><span class="feature-num">05 / 資料をもとに質問</span><h3>画像・ファイルの理解</h3><p>画像や資料などを扱う機構があります。対応形式、添付可能なサイズ、利用できる処理内容は環境や設定によって異なります。資料の内容を確実に確認できない場合もあります。</p><ul><li>画像に写った内容について質問</li><li>資料の要点や表現の相談</li><li>対応形式と権限を事前に確認</li></ul><p class="feature-use">たとえば：添付した説明資料の概要を知りたいとき</p></article>
-<article class="panel feature-card"><span class="feature-num">06 / サーバーの補助機能</span><h3>ニュース・音声関連</h3><p>ニュース情報の提供や音声認識・読み上げに関連する機構も開発しています。利用できる機能や操作はサーバーの設定、Botの稼働状況、外部サービスの条件によって異なります。</p><ul><li>ニュースや話題について質問</li><li>音声関連機能の利用を支援</li><li>使用できる機能はサーバー側で確認</li></ul><p class="feature-use">たとえば：ニュースの概要を知りたいとき</p></article></div>
-  <p class="section-note">これらは開発中の機構を含む紹介です。利用できる機能はサーバーの設定・権限・稼働状況等により異なり、常時提供を保証するものではありません。</p>
+  <div class="section-head"><p class="section-kicker">FEATURES</p><h2 id="features-title">できることと、利用時の注意。</h2><p class="section-intro">6つの機能を「何ができるか」「どう使うか」「どこに注意するか」に分けて紹介します。どの機能も、サーバー設定や外部サービスの状況によって利用可否が変わります。</p></div>
+  <nav class="feature-index" aria-label="機能紹介の目次">
+    <span>知りたい機能へ移動</span><a href="#feature-chat">AIチャット</a><a href="#feature-search">Web検索と出典</a><a href="#feature-context">会話履歴の活用</a><a href="#feature-memory">AIメモリ</a><a href="#feature-files">画像・ファイルの理解</a><a href="#feature-other">ニュース・音声関連</a>
+  </nav>
+  <div class="features-grid"><article class="panel feature-card" id="feature-chat"><span class="feature-num">01 / 会話・相談</span><h3>AIチャット</h3>
+    <p>質問への説明、雑談、文章の下書き、考えの整理をDiscordの会話の中で依頼できます。答えの長さ、説明の難しさ、箇条書きなどの形式を希望として伝えられます。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>専門用語を使わずに仕組みを説明してもらう</li><li>お知らせ文を読みやすい文章に整える</li><li>いくつかの案を比較し、検討材料を整理する</li></ul>
+    <p class="feature-use"><strong>質問例</strong> 「初心者向けに、メリットと注意点を3つずつ説明して」</p>
+    <p class="feature-limit"><strong>利用上の注意</strong> AIの回答は正しさを保証しません。重要な判断には別途確認が必要です。</p></article>
+<article class="panel feature-card" id="feature-search"><span class="feature-num">02 / 調べもの</span><h3>Web検索と出典</h3>
+    <p>新しい情報や参照元が必要な質問では、利用可能な検索機能を通じて外部情報を参照する場合があります。複数の情報の違いを整理したり、出典が示された場合に原文を確認したりできます。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>最近の話題や公開情報の概要をつかむ</li><li>発表日、更新日、発信元を比べる</li><li>公式発表と解説記事の違いを整理する</li></ul>
+    <p class="feature-use"><strong>質問例</strong> 「公開日も確認して、公式情報を優先して要点をまとめて」</p>
+    <p class="feature-limit"><strong>利用上の注意</strong> すべての質問で検索するわけではなく、出典も常に表示されるわけではありません。リンク先の原文を確認してください。</p></article>
+<article class="panel feature-card" id="feature-context"><span class="feature-num">03 / 続きの会話</span><h3>会話履歴の活用</h3>
+    <p>参照できる直近の会話がある場合、その話題を踏まえて説明し直したり、条件を変えて相談を続けたりするための仕組みです。前の発言をすべて永久に保持するものではありません。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>直前の説明を短く言い換える</li><li>一度出した条件を変えて比較する</li><li>複数回の質問で希望する方向へ近づける</li></ul>
+    <p class="feature-use"><strong>質問例</strong> 「さっきの3案のうち、準備が一番少ないものを詳しく」</p>
+    <p class="feature-limit"><strong>利用上の注意</strong> 会話が参照できない場合は、対象の内容や条件を改めて送ってください。</p></article>
+<article class="panel feature-card" id="feature-memory"><span class="feature-num">04 / 登録済み情報</span><h3>AIメモリ</h3>
+    <p>会話を助けるため、あらかじめ登録された情報を、利用が許可された範囲で参照する機構です。直近の会話履歴とは用途が異なり、サーバー共有情報と個人に関わる情報は同じ扱いではありません。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>登録されたサーバー案内を参照する</li><li>必要な前提情報を会話で活用する</li><li>対応する管理機能から許可された情報を確認する</li></ul>
+    <p class="feature-use"><strong>質問例</strong> 「このサーバーで共有されている案内をもとに説明して」</p>
+    <p class="feature-limit"><strong>利用上の注意</strong> 参照・編集の可否は権限や設定次第です。登録されていない情報を自動的に知っているわけではありません。</p></article>
+<article class="panel feature-card" id="feature-files"><span class="feature-num">05 / 添付資料</span><h3>画像・ファイルの理解</h3>
+    <p>画像や資料を扱う機構が利用できる場合、見えている内容を説明したり、資料の要点を整理したりする相談ができます。画像を読み取ることと、新しい画像を生成することは異なる機能です。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>画像の内容について質問する</li><li>説明資料の要点を整理する</li><li>資料の文章を分かりやすく言い換える</li></ul>
+    <p class="feature-use"><strong>質問例</strong> 「この資料の要点と、確認が必要な箇所を分けて教えて」</p>
+    <p class="feature-limit"><strong>利用上の注意</strong> 利用可能なファイル形式・容量・解析範囲は環境によって異なります。内容を正確に読み取れない場合もあります。</p></article>
+<article class="panel feature-card" id="feature-other"><span class="feature-num">06 / サーバー補助</span><h3>ニュース・音声関連</h3>
+    <p>ニュースに関する情報提供や、音声認識・読み上げに関連する機構も開発されています。使える操作や対象チャンネルは、サーバーの設定と現在の提供状況によって変わります。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>ニュースの概要や背景について質問する</li><li>対応する音声機能の利用条件を確認する</li><li>サーバーで使える補助機能の案内を確認する</li></ul>
+    <p class="feature-use"><strong>質問例</strong> 「このニュースの要点と、分からない部分を分けて説明して」</p>
+    <p class="feature-limit"><strong>利用上の注意</strong> 音声機能が常時利用できることや、ニュース情報が常に最新であることは保証されません。</p></article>
+  </div>
+  <p class="section-note">紹介は一般向けの機能概要です。実際の提供状況、操作、利用できる場所はサーバーの案内をご確認ください。すべての機能の常時稼働を保証するものではありません。</p>
 </div></section>
 
 <section id="how-to" aria-labelledby="how-title"><div class="wrap">
-  <div class="section-head"><p class="section-kicker">GETTING STARTED</p><h2 id="how-title">導入から最初の会話まで。</h2><p class="section-intro">Botを追加するサーバー管理者向けの4ステップです。すでにBotが導入されている場合は、最後のステップから確認してください。</p></div>
-  <div class="steps-grid"><article class="step"><strong>STEP 01</strong><h3>Discordの導入画面を開く</h3><p>ページ内の「Discordに導入する」からDiscord公式の認証画面へ移動します。移動先の表示内容を確認してください。</p></article><article class="step"><strong>STEP 02</strong><h3>追加するサーバーを選ぶ</h3><p>サーバー管理者、または必要な権限を持つアカウントでログインし、導入先のサーバーを選択します。</p></article><article class="step"><strong>STEP 03</strong><h3>要求される権限を確認する</h3><p>現在の招待URLは「管理者」権限を要求します。広い操作権限が与えられるため、追加先と必要性をよく確認してください。</p></article><article class="step"><strong>STEP 04</strong><h3>利用可能な場所で話しかける</h3><p>Botが利用できるチャンネルでメッセージを送ります。反応しない場合は、オンライン状態・権限・利用条件を確認してください。</p></article></div>
-  <div class="panel quick-start"><div><h3>準備ができたら、Discordへ。</h3><p>表示されるサーバー名と権限を確認してから認証してください。</p></div><a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1504043011884187659&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer">Botを導入する ↗</a></div>
-  <div class="admin-note"><h3>サーバー管理者向けの確認事項</h3><p>導入後は、Botを使うチャンネル・許可する操作・メンバーへの案内を整理してください。AIへ送信した情報が外部サービスで処理される場合があることも、利用者に共有しておくと安心です。</p></div>
+  <div class="section-head"><p class="section-kicker">GETTING STARTED</p><h2 id="how-title">管理者向け：導入から利用開始まで。</h2>
+  <p class="section-intro">自分のサーバーにBotを新しく追加する方向けの手順です。すでに追加済みなら招待操作は不要です。<a href="#examples">会話の例</a>から始めてください。</p></div>
+  <div class="steps-grid">
+    <article class="step"><strong>STEP 01</strong><h3>Discordの導入画面を開く</h3><p>本サイトの導入ボタンから、Discordの認証画面へ進みます。リンク先のアプリ名と要求内容を確認してください。見覚えのない画面では認証しないでください。</p></article>
+    <article class="step"><strong>STEP 02</strong><h3>追加先サーバーを選ぶ</h3><p>対象サーバーを選択します。追加に必要な管理権限を持たない場合、サーバーの管理者へ相談してください。別のサーバーを誤って選ばないよう注意してください。</p></article>
+    <article class="step"><strong>STEP 03</strong><h3>要求権限を確認する</h3><p>現行の招待リンクはDiscordの強い「管理者」権限を要求します。表示される許可内容を読み、サーバーの運用方針に照らして導入の必要性を判断してください。</p></article>
+    <article class="step"><strong>STEP 04</strong><h3>利用チャンネルを確認する</h3><p>導入後、Botを利用できるチャンネルや呼びかけ方を確認します。短い質問から試し、動かない場合は<a href="#troubleshooting">確認手順</a>へ進んでください。</p></article>
+  </div>
+  <div class="panel quick-start"><div><h3>権限の確認ができたら、導入画面へ。</h3><p>Discord側でサーバー名・Bot名・要求権限を確認してから認証してください。</p></div>
+    <a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1504043011884187659&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer">Botを導入する ↗</a></div>
+  <aside class="admin-note" aria-labelledby="admin-note-title"><h3 id="admin-note-title">導入後に確認したい3つのこと</h3>
+    <ul class="admin-checklist"><li><strong>チャンネル・権限：</strong>利用場所と付与した権限が、意図した範囲になっているか。</li>
+    <li><strong>メンバーへの案内：</strong>呼びかけ方、利用できる機能、使えない場合の連絡先を周知したか。</li>
+    <li><strong>入力情報の取り扱い：</strong>外部AI等による処理の可能性を伝え、個人情報や機密情報を送らないルールを共有したか。</li></ul>
+    <p>これらは管理者向けの一般的な確認ポイントです。実際の機能・権限はサーバーの設定を優先してください。</p>
+  </aside>
 </div></section>
 <section id="examples" aria-labelledby="examples-title"><div class="wrap">
   <div class="section-head"><p class="section-kicker">EXAMPLE MESSAGES</p><h2 id="examples-title">こんなふうに話しかけてみよう。</h2><p class="section-intro">普段の会話から調べものまで、用途別のメッセージ例を用意しました。言葉を変えたり、条件を追加したりして試せます。</p></div>
-  <div class="examples-grid"><article class="panel example-card"><span class="example-num">01 / MESSAGE</span><h3>わかりやすい説明</h3><div class="example-action"><code class="sample">ちるたいむ、生成AIと機械学習の違いを初心者向けに教えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例1をコピー">例文をコピー</button></div><p>専門的な話を、身近なたとえで理解したいとき。</p></article>
-<article class="panel example-card"><span class="example-num">02 / MESSAGE</span><h3>文章の下書き</h3><div class="example-action"><code class="sample">ちるたいむ、サーバーのお知らせ文を丁寧で短い文章にして</code><button class="copy-button" type="button" hidden aria-label="メッセージ例2をコピー">例文をコピー</button></div><p>イベント案内やお知らせの文章を整理したいとき。</p></article>
-<article class="panel example-card"><span class="example-num">03 / MESSAGE</span><h3>アイデア出し</h3><div class="example-action"><code class="sample">ちるたいむ、Discordでできる交流イベントを5つ考えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例3をコピー">例文をコピー</button></div><p>条件を追加しながら企画を広げたいとき。</p></article>
-<article class="panel example-card"><span class="example-num">04 / MESSAGE</span><h3>予定の整理</h3><div class="example-action"><code class="sample">ちるたいむ、今日やることを優先順位で整理する方法を教えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例4をコピー">例文をコピー</button></div><p>タスクや計画を分かりやすくしたいとき。</p></article>
-<article class="panel example-card"><span class="example-num">05 / MESSAGE</span><h3>調べもの</h3><div class="example-action"><code class="sample">ちるたいむ、最近のAIの話題をまとめて。出典があれば教えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例5をコピー">例文をコピー</button></div><p>新しい情報を調べたいとき。結果は必ず確認してください。</p></article>
-<article class="panel example-card"><span class="example-num">06 / MESSAGE</span><h3>複数案の比較</h3><div class="example-action"><code class="sample">ちるたいむ、二つの案のメリットとデメリットを表にして</code><button class="copy-button" type="button" hidden aria-label="メッセージ例6をコピー">例文をコピー</button></div><p>選択肢を比べて考えたいとき。</p></article>
-<article class="panel example-card"><span class="example-num">07 / MESSAGE</span><h3>ゲーム・創作</h3><div class="example-action"><code class="sample">ちるたいむ、淡い空色と白のお城の建築アイデアを考えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例7をコピー">例文をコピー</button></div><p>遊びや創作の相談をしたいとき。</p></article>
-<article class="panel example-card"><span class="example-num">08 / MESSAGE</span><h3>続きの質問</h3><div class="example-action"><code class="sample">ちるたいむ、さっきの説明を3行で要約して</code><button class="copy-button" type="button" hidden aria-label="メッセージ例8をコピー">例文をコピー</button></div><p>直前の内容を短くしたり、条件を変えたいとき。</p></article></div><aside class="conversation-guide" aria-labelledby="conversation-guide-title">
+  <div class="examples-grid"><article class="panel example-card"><span class="example-num">01 / MESSAGE</span><h3>わかりやすい説明</h3><div class="example-action"><code class="sample">ちるたいむ、生成AIと機械学習の違いを初心者向けに教えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例1をコピー">例文をコピー</button></div><p>専門的な話を、身近なたとえで理解したいとき。</p><p class="example-refine"><strong>さらに具体的にするなら：</strong>専門性、想定読者、文章量を指定すると答え方が伝わりやすくなります。</p></article>
+<article class="panel example-card"><span class="example-num">02 / MESSAGE</span><h3>文章の下書き</h3><div class="example-action"><code class="sample">ちるたいむ、サーバーのお知らせ文を丁寧で短い文章にして</code><button class="copy-button" type="button" hidden aria-label="メッセージ例2をコピー">例文をコピー</button></div><p>イベント案内やお知らせの文章を整理したいとき。</p><p class="example-refine"><strong>さらに具体的にするなら：</strong>掲載場所、対象者、日時、文体を添えると実用的な下書きになります。</p></article>
+<article class="panel example-card"><span class="example-num">03 / MESSAGE</span><h3>アイデア出し</h3><div class="example-action"><code class="sample">ちるたいむ、Discordでできる交流イベントを5つ考えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例3をコピー">例文をコピー</button></div><p>条件を追加しながら企画を広げたいとき。</p><p class="example-refine"><strong>さらに具体的にするなら：</strong>人数、所要時間、使える道具、避けたい内容などの条件を添えてください。</p></article>
+<article class="panel example-card"><span class="example-num">04 / MESSAGE</span><h3>予定の整理</h3><div class="example-action"><code class="sample">ちるたいむ、今日やることを優先順位で整理する方法を教えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例4をコピー">例文をコピー</button></div><p>タスクや計画を分かりやすくしたいとき。</p><p class="example-refine"><strong>さらに具体的にするなら：</strong>締切、重要度、今できることを伝えると、整理の基準を考えやすくなります。</p></article>
+<article class="panel example-card"><span class="example-num">05 / MESSAGE</span><h3>調べもの</h3><div class="example-action"><code class="sample">ちるたいむ、最近のAIの話題をまとめて。出典があれば教えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例5をコピー">例文をコピー</button></div><p>新しい情報を調べたいとき。結果は必ず確認してください。</p><p class="example-refine"><strong>さらに具体的にするなら：</strong>調べたい期間や一次情報の優先度を指定し、公開日と原文を確認してください。</p></article>
+<article class="panel example-card"><span class="example-num">06 / MESSAGE</span><h3>複数案の比較</h3><div class="example-action"><code class="sample">ちるたいむ、二つの案のメリットとデメリットを表にして</code><button class="copy-button" type="button" hidden aria-label="メッセージ例6をコピー">例文をコピー</button></div><p>選択肢を比べて考えたいとき。</p><p class="example-refine"><strong>さらに具体的にするなら：</strong>比較したい二つの案と、費用・手間・安全性などの判断軸を示してください。</p></article>
+<article class="panel example-card"><span class="example-num">07 / MESSAGE</span><h3>ゲーム・創作</h3><div class="example-action"><code class="sample">ちるたいむ、淡い空色と白のお城の建築アイデアを考えて</code><button class="copy-button" type="button" hidden aria-label="メッセージ例7をコピー">例文をコピー</button></div><p>遊びや創作の相談をしたいとき。</p><p class="example-refine"><strong>さらに具体的にするなら：</strong>使用できる素材、サイズ、雰囲気、予算など、想像しやすい条件を加えられます。</p></article>
+<article class="panel example-card"><span class="example-num">08 / MESSAGE</span><h3>続きの質問</h3><div class="example-action"><code class="sample">ちるたいむ、さっきの説明を3行で要約して</code><button class="copy-button" type="button" hidden aria-label="メッセージ例8をコピー">例文をコピー</button></div><p>直前の内容を短くしたり、条件を変えたいとき。</p><p class="example-refine"><strong>さらに具体的にするなら：</strong>前の話題が参照されていない場合は、要約してほしい文章を再度提示してください。</p></article></div><aside class="conversation-guide" aria-labelledby="conversation-guide-title">
   <div class="conversation-head"><span class="section-kicker">ONE CONVERSATION, THREE STEPS</span><h3 id="conversation-guide-title">一度の質問で終わらず、少しずつ具体的に。</h3><p>たとえば、サーバーの交流イベントを考える場合。最初に相談してから、条件を追加し、実施に向けた情報を整理する流れです。</p></div>
   <ol class="conversation-grid">
     <li><span>01 / まず相談</span><p>6人で30分ほど遊べる交流イベントを3つ考えて</p><small>人数・時間・目的を伝える</small></li>
@@ -443,25 +525,42 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   <p class="section-note">入力例は説明用です。回答の内容・出典表示・応答時間を保証するものではありません。実際の呼びかけ方はサーバーの設定や利用できる機能によって異なります。</p>
 </div></section>
 <section class="system" id="system" aria-labelledby="system-title"><div class="wrap system-grid">
-  <div class="system-copy"><p class="section-kicker">HOW IT WORKS</p><h2 id="system-title">会話を支える、<br>情報の使い分け。</h2>
-    <p>ちるたいむBotは、質問と会話の流れを踏まえ、必要に応じてWeb情報や利用が許可されたメモリを参照する設計です。</p>
-    <p>「さっきの話題を続ける」「登録された情報を使う」「新しい情報を調べる」は、それぞれ目的が異なります。情報が見つからない場合や、根拠が不十分な場合もあります。</p>
-    <details class="tech-info"><summary>検索結果や出典をどう確認すればいい？</summary><p>出典のリンクがある場合は、元ページの公開日、記事の内容、発信元を確認してください。検索が使われていない回答や、出典が表示されない回答は、それだけで事実が裏付けられたことにはなりません。重要な情報は公式資料などと照合してください。</p></details>
+  <div class="system-copy"><p class="section-kicker">HOW IT WORKS</p><h2 id="system-title">会話・メモリ・検索は、<br>役割が異なります。</h2>
+    <p>ちるたいむBotは、質問の内容と会話の流れに応じて、参照できる情報を利用する設計です。ただし、すべての質問で全種類の情報を使うわけではありません。</p>
+    <p><strong>直近の会話</strong>は話の続きを理解する手がかり、<strong>AIメモリ</strong>は利用を許可された登録情報、<strong>Web検索</strong>は必要に応じて調べる外部情報です。三者を同じ「何でも覚えている機能」と考えないことが重要です。</p>
+    <details class="tech-info"><summary>検索結果や出典はどう確認する？</summary>
+      <p>出典が示されている場合は、発信元、公開日、更新日、原文の記述を確認してください。複数の情報が矛盾する場合は、公式発表など一次情報を優先して確認しましょう。検索していない回答や出典のない回答は、根拠が確認済みという意味ではありません。</p></details>
+    <p class="system-action">必要な情報が抜けていたら、質問の前提をもう一度書いたり、「何を根拠にしたか」「確認できなかった点はどこか」と聞いたりできます。</p>
   </div>
   <div class="flow-grid">
-    <article class="panel flow-step"><strong>01 / 現在の会話</strong><h3>質問と文脈</h3><p>今回のメッセージや、参照できる直近の会話を使い、何を求められているかを整理します。</p></article>
-    <article class="panel flow-step"><strong>02 / 登録済み情報</strong><h3>AIメモリ</h3><p>利用権限が確認された情報を参照するための機構です。共有範囲や設定によって扱いが異なります。</p></article>
-    <article class="panel flow-step"><strong>03 / 外部情報</strong><h3>必要に応じてWeb検索</h3><p>新しい情報を求められたときなどに、外部情報を参照する場合があります。</p></article>
-    <article class="panel flow-step"><strong>04 / 返答</strong><h3>回答と注意点</h3><p>分かりやすい説明を目指し、確認できた場合は参照元を示します。</p></article>
+    <article class="panel flow-step"><strong>01 / 質問の文脈</strong><h3>直近のやり取り</h3><p>参照できる会話があれば、代名詞や追加条件などを理解する助けになります。ただし、すべての過去発言を使えるわけではありません。</p></article>
+    <article class="panel flow-step"><strong>02 / 利用が許可された情報</strong><h3>AIメモリ</h3><p>登録された情報を必要に応じて参照する仕組みです。誰が見たり編集したりできるかは、情報の種類と権限・設定によって異なります。</p></article>
+    <article class="panel flow-step"><strong>03 / 外部情報</strong><h3>必要に応じたWeb検索</h3><p>新しい公開情報を確認する場合などに利用する機構です。利用できない場合や、十分な根拠が見つからない場合もあります。</p></article>
+    <article class="panel flow-step"><strong>04 / 返答</strong><h3>説明と確認</h3><p>得られた情報から説明を作成します。回答には誤解や不足があり得るため、重要な内容は利用者自身が原文を確認してください。</p></article>
   </div>
 </div></section>
 <section id="trust" aria-labelledby="trust-title"><div class="wrap">
-  <div class="section-head"><p class="section-kicker">SAFETY & TRANSPARENCY</p><h2 id="trust-title">安心して使うために、知っておきたいこと。</h2><p class="section-intro">AIの便利さと同時に、誤回答、入力情報、権限、稼働の制約も理解して使いましょう。</p></div>
-  <div class="trust-grid"><article class="panel trust-card"><h3>AIの回答は参考にする</h3><p>AIが誤った情報や古い説明を返す場合があります。医療・法律・金融・安全など重要な判断は、一次情報や専門家による確認が必要です。</p><a class="text-link" href="#faq">よくある質問 →</a></article><article class="panel trust-card"><h3>個人情報・秘密情報は入力しない</h3><p>入力したメッセージや添付資料は、機能の提供に必要な場合、外部のAI・検索等のサービスへ送られることがあります。認証情報や第三者の秘密を入力しないでください。</p><a class="text-link" href="#privacy">情報の取り扱い →</a></article><article class="panel trust-card"><h3>共有範囲と権限を意識する</h3><p>サーバーと個人では、利用できる機能や参照可能な情報が異なる場合があります。AIメモリの編集や公開範囲は、各機能の権限を確認してください。</p><a class="text-link" href="#system">情報の使い分け →</a></article><article class="panel trust-card"><h3>Botの稼働は一定ではない</h3><p>外部APIの障害、利用枠、サーバー側の権限、Botのメンテナンスなどによって動かない場合があります。利用できないときは確認手順を参照してください。</p><a class="text-link" href="#troubleshooting">困ったときの確認 →</a></article></div>
+  <div class="section-head"><p class="section-kicker">SAFETY & TRANSPARENCY</p><h2 id="trust-title">安全に利用するための基本。</h2>
+    <p class="section-intro">AIとの会話では「正確さ」「入力する情報」「アクセス権限」「稼働状況」の4つを分けて確認することが重要です。</p></div>
+  <div class="trust-grid">
+    <article class="panel trust-card"><h3>01. 回答の根拠を確かめる</h3><p>もっともらしい説明でも誤りや古い情報が含まれる場合があります。出典が示されたら原文を読み、医療・法律・金融・安全に関する重要な判断は公式資料や専門家と照合してください。</p><a class="text-link" href="#system">出典を確認する方法 →</a></article>
+    <article class="panel trust-card"><h3>02. 入力前に公開範囲を考える</h3><p>メッセージや添付情報は、機能の提供に必要な場合、外部のAI・検索等の事業者で処理されることがあります。パスワード、認証コード、決済情報、第三者の秘密、非公開資料の無断共有は避けてください。</p><a class="text-link" href="#privacy">プライバシーポリシー →</a></article>
+    <article class="panel trust-card"><h3>03. 閲覧・編集権限を確認する</h3><p>サーバー内の共有情報と個人に関わる情報は、同じ範囲で利用できるとは限りません。メモリの確認・編集やBotの操作は、各サーバーの権限と設定を踏まえて行ってください。</p><a class="text-link" href="#feature-memory">AIメモリの説明 →</a></article>
+    <article class="panel trust-card"><h3>04. 利用できない場合も想定する</h3><p>外部APIの制限、障害、メンテナンス、チャンネル権限などで一部または全部が動かない場合があります。繰り返し送信せず、状況を整理して確認手順に進んでください。</p><a class="text-link" href="#troubleshooting">トラブル対処を見る →</a></article>
+  </div>
+  <aside class="safety-check" aria-labelledby="safety-check-title"><h3 id="safety-check-title">送信前の3秒チェック</h3>
+    <ul><li>この内容は、外部サービスで処理されても差し支えないか。</li><li>誰かの秘密情報や、公開してはいけない資料を含んでいないか。</li><li>AIからの回答を、そのまま確定情報として扱おうとしていないか。</li></ul>
+    <p>迷う場合は、具体的な名前や個人を特定できる情報を取り除き、一般化した質問にしてください。</p></aside>
 </div></section>
 <section class="tips-section" id="tips" aria-labelledby="tips-title"><div class="wrap">
   <div class="section-head"><p class="section-kicker">BETTER CONVERSATIONS</p><h2 id="tips-title">ちょっとしたコツで、会話がもっとスムーズに。</h2><p class="section-intro">難しい操作は必要ありません。伝え方を少し工夫すると、欲しい答えに近づきやすくなります。</p></div>
   <div class="tips-grid"><article class="panel tip-card"><span class="tip-number">01 / TIP</span><h3>目的を先に伝える</h3><p>「これについて教えて」よりも、「初心者向けに3つのポイントで教えて」のように目的を明確にすると、答え方を調整しやすくなります。</p><div class="tip-example">例：専門用語を避け、短く説明して</div></article><article class="panel tip-card"><span class="tip-number">02 / TIP</span><h3>条件と背景を添える</h3><p>時間・人数・予算・対象者など、判断に必要な条件を合わせて伝えると、候補を絞りやすくなります。</p><div class="tip-example">例：6人で、30分以内にできるイベント案</div></article><article class="panel tip-card"><span class="tip-number">03 / TIP</span><h3>分からなければ聞き直す</h3><p>説明が難しいときは「たとえ話で」「表にして」「別の考え方も」と伝えましょう。前の回答が必ず保持されるわけではないため、必要な情報は再提示してください。</p><div class="tip-example">例：さっきの答えを中学生向けに言い換えて</div></article><article class="panel tip-card"><span class="tip-number">04 / TIP</span><h3>大事な情報は元を確認</h3><p>検索で得た情報やAIが作った説明は間違うことがあります。出典がある場合は公開日・原文・信頼性を確かめてください。</p><div class="tip-example">例：その説明の根拠となる資料を教えて</div></article></div>
+  <aside class="prompt-pattern" aria-labelledby="prompt-pattern-title">
+  <div><p class="section-kicker">A SIMPLE QUESTION FRAMEWORK</p><h3 id="prompt-pattern-title">伝わりやすい質問は、4つの要素で組み立てられます。</h3>
+    <p>毎回すべて書く必要はありません。ほしい答えに合わせて組み合わせてください。</p></div>
+  <dl class="prompt-parts"><div><dt>目的</dt><dd>何を知りたい・作りたい？</dd></div><div><dt>条件</dt><dd>人数、時間、対象者など</dd></div><div><dt>形式</dt><dd>短く、表で、順番に、など</dd></div><div><dt>確認</dt><dd>出典、注意点、不明点など</dd></div></dl>
+  <p class="prompt-full-example"><strong>組み合わせ例：</strong>「初心者6人で30分の交流企画を考えたい。準備物が少ない案を3つ、注意点付きで箇条書きにして」</p>
+</aside>
   <p class="section-note">入力が具体的でも必ず希望どおりに回答できるとは限りません。公開してよい範囲の情報だけを伝えてください。</p>
 </div></section>
 <section class="troubleshooting" id="troubleshooting" aria-labelledby="trouble-title"><div class="wrap">
@@ -487,22 +586,22 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 </div></section>
 <section class="faq" id="faq" aria-labelledby="faq-title"><div class="wrap faq-grid">
   <div class="section-head"><p class="section-kicker">FREQUENTLY ASKED QUESTIONS</p><h2 id="faq-title">よくある質問。</h2><p class="section-intro">利用方法、検索、記憶、料金、プライバシーなどについて、質問を押すと回答を読むことができます。</p><p class="faq-hint">カテゴリ別の一覧に加え、質問・回答内の言葉で探せます。複数の言葉を空白で区切って絞り込めます。</p><form class="faq-search" role="search" hidden><label for="faq-search-input">キーワードで質問を探す</label><div class="faq-search-row"><input id="faq-search-input" name="faq-search" type="search" autocomplete="off" placeholder="例：メモリ、料金、権限"><button type="button" class="faq-clear">クリア</button></div><div class="faq-suggestions" role="group" aria-label="よく検索されるキーワード"><span>よく探される内容</span><button type="button" data-faq-query="メモリ" aria-pressed="false">メモリ</button><button type="button" data-faq-query="料金" aria-pressed="false">料金</button><button type="button" data-faq-query="権限" aria-pressed="false">権限</button><button type="button" data-faq-query="音声" aria-pressed="false">音声</button></div><p class="faq-search-status" id="faq-search-status" role="status" aria-live="polite" hidden></p></form><nav class="faq-tabs" aria-label="FAQのカテゴリ"><a href="#faq-start">利用・回答</a><a href="#faq-memory">メモリ・情報</a><a href="#faq-setup">設定・トラブル</a></nav></div>
-  <div class="faq-list"><div class="faq-category-group"><h3 class="faq-category" id="faq-start"><span>01</span>はじめての利用と回答</h3><details class="faq-item"><summary>初めて使うには何が必要ですか？</summary><p>Discordアカウントと、Botが利用できるサーバー・チャンネルが必要です。自分のサーバーへ追加する場合は、必要な管理権限も必要です。まずは上の導入方法をご確認ください。</p><p class="faq-related"><span>関連する案内</span><a href="#how-to">導入までの4ステップ →</a></p></details>
-<details class="faq-item"><summary>どのような質問ができますか？</summary><p>説明、相談、文章作成、アイデア出し、情報整理などを依頼できます。具体的な条件や希望する答え方を添えると、回答を調整しやすくなります。</p><p class="faq-related"><span>関連する案内</span><a href="#examples">具体的なメッセージ例 →</a></p></details>
-<details class="faq-item"><summary>AIの回答はいつでも正確ですか？</summary><p>いいえ。誤り、古い情報、誤解が含まれる場合があります。重大な決定や専門的な問題については、公式資料や専門家で確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#trust">安全に利用するための注意 →</a></p></details>
-<details class="faq-item"><summary>Web検索と出典表示は必ず行われますか？</summary><p>必ずではありません。質問内容、外部サービスの状態、利用できる機能によって変わります。出典がない場合は根拠が確認済みだと判断しないでください。</p><p class="faq-related"><span>関連する案内</span><a href="#system">検索と会話情報の仕組み →</a></p></details>
-<details class="faq-item"><summary>画像や資料を送って質問できますか？</summary><p>画像・ファイルを扱う機構があります。ただし対応する形式、サイズ、機能、処理方法は利用環境により異なります。送れない場合は管理者に設定を確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#features">主な機能の説明 →</a></p></details></div>
-<div class="faq-category-group"><h3 class="faq-category" id="faq-memory"><span>02</span>会話履歴・メモリ・情報の取り扱い</h3><details class="faq-item"><summary>前の会話を覚えていますか？</summary><p>直近の会話を参照するための仕組みがありますが、参照できる期間や範囲には制約があります。重要な前提は必要に応じてもう一度伝えてください。</p><p class="faq-related"><span>関連する案内</span><a href="#system">会話履歴とメモリの仕組み →</a></p></details>
-<details class="faq-item"><summary>AIメモリと会話履歴は何が違いますか？</summary><p>会話履歴は最近のやり取りを踏まえるための情報、AIメモリは利用が許可された登録情報を参照するための仕組みです。保存・参照できる内容は設定や権限によって異なります。</p><p class="faq-related"><span>関連する案内</span><a href="#system">情報の使い分け →</a></p></details>
-<details class="faq-item"><summary>別のサーバーの情報を参照できますか？</summary><p>AIメモリはサーバーや利用者等の範囲を区別する設計です。別のサーバーや他人の非公開情報が自由に参照できる機能として案内しているものではありません。</p><p class="faq-related"><span>関連する案内</span><a href="#trust">安全性とアクセス範囲 →</a></p></details>
-<details class="faq-item"><summary>メッセージや添付資料は保存されますか？</summary><p>機能の提供、会話の文脈処理、AIメモリ、障害調査などに必要な範囲で処理・保存される場合があります。保存や削除の詳細はプライバシーポリシーをご確認ください。</p><p class="faq-related"><span>関連する案内</span><a href="#privacy">プライバシーポリシー →</a></p></details>
-<details class="faq-item"><summary>AIメモリを修正したい場合は？</summary><p>対応する管理機能が利用可能であれば、設定された権限の範囲で確認・編集してください。操作できない場合は管理者に設定を確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#features">AIメモリの機能概要 →</a></p></details></div>
-<div class="faq-category-group"><h3 class="faq-category" id="faq-setup"><span>03</span>料金・設定・トラブル</h3><details class="faq-item"><summary>Botの利用に料金はかかりますか？</summary><p>このサイトは利用者への一律の料金請求を案内していません。一方、Botの運営には外部API等の費用がかかる場合があります。サービスの提供条件は変更される可能性があります。</p><p class="faq-related"><span>関連する案内</span><a href="#service-info">サービス仕様・利用上の注意 →</a></p></details>
-<details class="faq-item"><summary>導入時に管理者権限が表示される理由は？</summary><p>現在の招待URLが強い「管理者」権限を要求しているためです。広範な操作が可能になるので、追加先のサーバーと必要性を理解してから認証してください。</p><p class="faq-related"><span>関連する案内</span><a href="#how-to">導入手順と権限の確認 →</a></p></details>
-<details class="faq-item"><summary>Botが反応しない場合は？</summary><p>オンライン状態、チャンネル権限、呼びかけ方、外部サービスの障害や利用枠を順に確認してください。詳しくは「困ったとき」の案内をご覧ください。</p><p class="faq-related"><span>関連する案内</span><a href="#trouble-online">困ったときの確認手順 →</a></p></details>
-<details class="faq-item"><summary>ニュースや音声機能は誰でも利用できますか？</summary><p>ニュース・音声関連の機構がありますが、使用できる機能や操作はサーバー設定・Botの稼働・外部サービスの利用条件によって異なります。</p><p class="faq-related"><span>関連する案内</span><a href="#features">主な機能の説明 →</a></p></details>
-<details class="faq-item"><summary>スラッシュコマンドはどこで確認できますか？</summary><p>Discordの入力欄で「/」を入力すると、権限や環境に応じたコマンド候補を確認できます。サイトでは未確認のコマンド一覧を固定していません。</p><p class="faq-related"><span>関連する案内</span><a href="#how-to">利用開始までの手順 →</a></p></details>
-<details class="faq-item"><summary>このBotはDiscord公式のサービスですか？</summary><p>いいえ。ちるたいむBotは個人開発のDiscord向けBotで、Discordや外部AI事業者の公式製品ではありません。</p><p class="faq-related"><span>関連する案内</span><a href="#operator">運営者情報 →</a></p></details></div><div class="faq-empty" id="faq-empty" hidden><strong>一致する質問が見つかりませんでした。</strong><p>別の言葉を入力するか、検索をクリアして一覧をご確認ください。</p><button type="button" class="faq-reset">すべての質問を表示</button></div></div>
+  <div class="faq-list"><div class="faq-category-group"><h3 class="faq-category" id="faq-start"><span>01</span>はじめての利用と回答</h3><details class="faq-item"><summary>初めて使うには何が必要ですか？</summary><p>Discordアカウントと、Botが利用できるサーバー・チャンネルが必要です。自分のサーバーへ追加する場合は、必要な管理権限も必要です。まずは上の導入方法をご確認ください。</p><p class="faq-extra"><strong>確認のポイント：</strong>すでにBotがサーバーに参加している場合、通常は新しい招待操作は不要です。利用場所と呼びかけ方を先に確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#how-to">導入までの4ステップ →</a></p></details>
+<details class="faq-item"><summary>どのような質問ができますか？</summary><p>説明、相談、文章作成、アイデア出し、情報整理などを依頼できます。具体的な条件や希望する答え方を添えると、回答を調整しやすくなります。</p><p class="faq-extra"><strong>確認のポイント：</strong>「何を知りたいか」に加え、対象者、文字数、希望する形式を指定すると、回答を調整してもらいやすくなります。</p><p class="faq-related"><span>関連する案内</span><a href="#examples">具体的なメッセージ例 →</a></p></details>
+<details class="faq-item"><summary>AIの回答はいつでも正確ですか？</summary><p>いいえ。誤り、古い情報、誤解が含まれる場合があります。重大な決定や専門的な問題については、公式資料や専門家で確認してください。</p><p class="faq-extra"><strong>確認のポイント：</strong>特に日時、価格、制度、製品仕様など変化する情報は、最新の公式情報で確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#trust">安全に利用するための注意 →</a></p></details>
+<details class="faq-item"><summary>Web検索と出典表示は必ず行われますか？</summary><p>必ずではありません。質問内容、外部サービスの状態、利用できる機能によって変わります。出典がない場合は根拠が確認済みだと判断しないでください。</p><p class="faq-extra"><strong>確認のポイント：</strong>出典が表示されても、リンク先の文章が回答内容を裏付けているかは利用者が確かめる必要があります。</p><p class="faq-related"><span>関連する案内</span><a href="#system">検索と会話情報の仕組み →</a></p></details>
+<details class="faq-item"><summary>画像や資料を送って質問できますか？</summary><p>画像・ファイルを扱う機構があります。ただし対応する形式、サイズ、機能、処理方法は利用環境により異なります。送れない場合は管理者に設定を確認してください。</p><p class="faq-extra"><strong>確認のポイント：</strong>画像や資料の読み取りと、新しい画像を生成する機能は別です。対応形式や現在使える機能はサーバーの案内に従ってください。</p><p class="faq-related"><span>関連する案内</span><a href="#features">主な機能の説明 →</a></p></details></div>
+<div class="faq-category-group"><h3 class="faq-category" id="faq-memory"><span>02</span>会話履歴・メモリ・情報の取り扱い</h3><details class="faq-item"><summary>前の会話を覚えていますか？</summary><p>直近の会話を参照するための仕組みがありますが、参照できる期間や範囲には制約があります。重要な前提は必要に応じてもう一度伝えてください。</p><p class="faq-extra"><strong>確認のポイント：</strong>前の内容が伝わらない場合は「比較したい2案はこれです」のように必要な前提を再入力してください。</p><p class="faq-related"><span>関連する案内</span><a href="#system">会話履歴とメモリの仕組み →</a></p></details>
+<details class="faq-item"><summary>AIメモリと会話履歴は何が違いますか？</summary><p>会話履歴は最近のやり取りを踏まえるための情報、AIメモリは利用が許可された登録情報を参照するための仕組みです。保存・参照できる内容は設定や権限によって異なります。</p><p class="faq-extra"><strong>確認のポイント：</strong>会話が続いているからといって、その内容が自動的に長期間のメモリに登録されたと判断しないでください。</p><p class="faq-related"><span>関連する案内</span><a href="#system">情報の使い分け →</a></p></details>
+<details class="faq-item"><summary>別のサーバーの情報を参照できますか？</summary><p>AIメモリはサーバーや利用者等の範囲を区別する設計です。別のサーバーや他人の非公開情報が自由に参照できる機能として案内しているものではありません。</p><p class="faq-extra"><strong>確認のポイント：</strong>他サーバーや別ユーザーの非公開情報にアクセスできると想定せず、共有が許されている範囲を管理者に確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#trust">安全性とアクセス範囲 →</a></p></details>
+<details class="faq-item"><summary>メッセージや添付資料は保存されますか？</summary><p>機能の提供、会話の文脈処理、AIメモリ、障害調査などに必要な範囲で処理・保存される場合があります。保存や削除の詳細はプライバシーポリシーをご確認ください。</p><p class="faq-extra"><strong>確認のポイント：</strong>入力前に、機密情報を含まないか確認してください。保存・削除・外部送信については規約本文に記載された条件をご確認ください。</p><p class="faq-related"><span>関連する案内</span><a href="#privacy">プライバシーポリシー →</a></p></details>
+<details class="faq-item"><summary>AIメモリを修正したい場合は？</summary><p>対応する管理機能が利用可能であれば、設定された権限の範囲で確認・編集してください。操作できない場合は管理者に設定を確認してください。</p><p class="faq-extra"><strong>確認のポイント：</strong>編集できない場合は無理に権限を変更せず、必要な権限を持つサーバー管理者などに確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#features">AIメモリの機能概要 →</a></p></details></div>
+<div class="faq-category-group"><h3 class="faq-category" id="faq-setup"><span>03</span>料金・設定・トラブル</h3><details class="faq-item"><summary>Botの利用に料金はかかりますか？</summary><p>このサイトは利用者への一律の料金請求を案内していません。一方、Botの運営には外部API等の費用がかかる場合があります。サービスの提供条件は変更される可能性があります。</p><p class="faq-extra"><strong>確認のポイント：</strong>利用条件や提供状況は将来変わる場合があります。サイトに明記されていない個別料金や支払い方法を推測しないでください。</p><p class="faq-related"><span>関連する案内</span><a href="#service-info">サービス仕様・利用上の注意 →</a></p></details>
+<details class="faq-item"><summary>導入時に管理者権限が表示される理由は？</summary><p>現在の招待URLが強い「管理者」権限を要求しているためです。広範な操作が可能になるので、追加先のサーバーと必要性を理解してから認証してください。</p><p class="faq-extra"><strong>確認のポイント：</strong>「管理者」権限は広範囲の操作を可能にします。理由を確認できない場合は、認証前に運営者へ問い合わせてください。</p><p class="faq-related"><span>関連する案内</span><a href="#how-to">導入手順と権限の確認 →</a></p></details>
+<details class="faq-item"><summary>Botが反応しない場合は？</summary><p>オンライン状態、チャンネル権限、呼びかけ方、外部サービスの障害や利用枠を順に確認してください。詳しくは「困ったとき」の案内をご覧ください。</p><p class="faq-extra"><strong>確認のポイント：</strong>すべてのチャンネルで起きるか、一つのチャンネルだけか、特定の機能だけかを分けて確認すると原因を絞りやすくなります。</p><p class="faq-related"><span>関連する案内</span><a href="#trouble-online">困ったときの確認手順 →</a></p></details>
+<details class="faq-item"><summary>ニュースや音声機能は誰でも利用できますか？</summary><p>ニュース・音声関連の機構がありますが、使用できる機能や操作はサーバー設定・Botの稼働・外部サービスの利用条件によって異なります。</p><p class="faq-extra"><strong>確認のポイント：</strong>ニュースの更新頻度や音声機能の操作は一律ではありません。利用可能な機能はサーバーの案内を参照してください。</p><p class="faq-related"><span>関連する案内</span><a href="#features">主な機能の説明 →</a></p></details>
+<details class="faq-item"><summary>スラッシュコマンドはどこで確認できますか？</summary><p>Discordの入力欄で「/」を入力すると、権限や環境に応じたコマンド候補を確認できます。サイトでは未確認のコマンド一覧を固定していません。</p><p class="faq-extra"><strong>確認のポイント：</strong>候補が表示されない場合、利用権限やBotの登録状態によって使えるコマンドが異なる可能性があります。</p><p class="faq-related"><span>関連する案内</span><a href="#how-to">利用開始までの手順 →</a></p></details>
+<details class="faq-item"><summary>このBotはDiscord公式のサービスですか？</summary><p>いいえ。ちるたいむBotは個人開発のDiscord向けBotで、Discordや外部AI事業者の公式製品ではありません。</p><p class="faq-extra"><strong>確認のポイント：</strong>Discordの公式窓口や外部AIサービス提供元が運営する製品ではありません。サービスの条件と問い合わせ先は本サイトの運営者情報をご覧ください。</p><p class="faq-related"><span>関連する案内</span><a href="#operator">運営者情報 →</a></p></details></div><div class="faq-empty" id="faq-empty" hidden><strong>一致する質問が見つかりませんでした。</strong><p>別の言葉を入力するか、検索をクリアして一覧をご確認ください。</p><button type="button" class="faq-reset">すべての質問を表示</button></div></div>
 </div></section>
 <section class="legal-section" id="legal" aria-labelledby="legal-title">
       <div class="wrap">
@@ -511,6 +610,14 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
           <h2 id="legal-title">安心して利用するために。</h2>
           <p class="section-intro">目的別に整理した規約・ポリシーです。目次の項目を選ぶと該当する規約を表示できます。導入前に利用条件と情報の取り扱いをご確認ください。</p>
         </div>
+        <aside class="legal-primer" aria-labelledby="legal-primer-title">
+  <h3 id="legal-primer-title">最初に確認したい3つの項目</h3>
+  <div class="legal-primer-grid">
+    <a href="#terms"><strong>利用時のルール</strong><span>利用者・管理者の責任、禁止事項、サービスの変更を確認</span></a>
+    <a href="#privacy"><strong>情報の取り扱い</strong><span>入力内容、保存、外部サービスへの送信に関する説明を確認</span></a>
+    <a href="#disclaimer"><strong>回答とサービスの限界</strong><span>AIの誤回答、提供停止、判断に関する注意を確認</span></a>
+  </div><p>この案内は目次です。正式な内容は、以下の各規約・ポリシーの本文をお読みください。</p>
+</aside>
         <nav class="legal-index" aria-label="規約の目次"><a href="#terms">利用規約</a><a href="#privacy">プライバシー</a><a href="#disclaimer">免責事項</a><a href="#service-info">サービス仕様</a><a href="#operator">運営者情報</a><a href="#ip">知的財産</a></nav><div class="legal-grid">
           <details class="legal-card" id="terms"><summary>利用規約<span aria-hidden="true" class="expand-sign"></span></summary>
             <p>本規約は、ちるたいむBot（以下「本サービス」）の利用条件を定めるものです。本サービスを導入または利用した場合、本規約に同意したものとして取り扱います。</p>
@@ -621,7 +728,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
         <div class="legal-warning"><strong>利用前にご確認ください：</strong>本サービスは外部のAI・検索・音声・ホスティングサービスを利用するため、入力内容が外部事業者へ送信される場合があります。機密情報や第三者の個人情報は入力しないでください。公開の問い合わせ窓口はありません。</div>
       </div>
     </section>
-<section class="final-cta" aria-labelledby="final-title"><div class="wrap"><p class="section-kicker">READY WHEN YOU ARE</p><h2 id="final-title">いつものサーバーに、<br>ちるたいむBotを。</h2><p>まず導入手順と権限を確認し、利用できる機能からお試しください。</p><div class="actions"><a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1504043011884187659&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer">Discordの導入画面を開く ↗</a><a class="button secondary" href="#top">ページ先頭へ ↑</a></div></div></section>
+<section class="final-cta" aria-labelledby="final-title"><div class="wrap"><p class="section-kicker">READY WHEN YOU ARE</p><h2 id="final-title">いつものサーバーに、<br>ちるたいむBotを。</h2><p>すでにBotが導入されているサーバーでは使い方の例をご覧ください。新たに追加する場合は導入手順と要求権限を確認してください。</p><div class="actions"><a class="button primary" href="https://discord.com/oauth2/authorize?client_id=1504043011884187659&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener noreferrer">Discordの導入画面を開く ↗</a><a class="button secondary" href="#top">使い方の例を見る ↓</a><a class="button secondary" href="#top">ページ先頭へ ↑</a></div></div></section>
 </main>
 <a class="back-to-top" href="#top" hidden aria-label="ページの先頭へ戻る"><span aria-hidden="true">↑</span>先頭へ</a>
 <footer class="site-footer"><div class="wrap footer-inner"><div><div class="footer-brand">✦ ちるたいむBot</div><span class="footer-tagline">ちょっと一息、ちるたいむ。</span><small>個人開発のDiscord向けAI Bot · 開発・改善中<br>運営者：いちごみるく · © 2026 ちるたいむBot</small></div><nav class="footer-links" aria-label="フッターリンク"><a href="#features">機能</a><a href="#tips">質問のコツ</a><a href="#troubleshooting">困ったとき</a><a href="#faq">FAQ</a><a href="#terms">利用規約</a><a href="#privacy">プライバシー</a><a href="#disclaimer">免責事項</a><a href="#operator">運営者情報</a><a href="#top">トップへ戻る</a></nav></div></footer>
