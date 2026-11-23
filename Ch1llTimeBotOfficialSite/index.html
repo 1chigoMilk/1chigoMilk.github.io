@@ -984,7 +984,10 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
         button.removeAttribute("aria-busy");
       }
       // An older asynchronous clipboard response must not overwrite a newer one.
-      if (attempt !== latestCopyAttempt) return;
+      if (attempt !== latestCopyAttempt) {
+        button.textContent = button.dataset.copyLabel || "例文をコピー";
+        return;
+      }
       button.textContent = buttonLabel;
       if (copyStatus) copyStatus.textContent = announcement;
     });
