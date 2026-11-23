@@ -144,6 +144,16 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .feature-card .feature-use strong,.feature-limit strong {display:block;margin-bottom:5px;color:var(--pink);font-size:12px;}
 .feature-limit {margin-top:13px!important;padding:12px 14px;border-radius:10px;background:rgba(255,209,239,.055);color:var(--muted)!important;font-size:13px!important;border:1px solid var(--line);}
 .feature-card {scroll-margin-top:102px;}
+
+.conversation-mode-guide {margin-top:24px;padding:24px;border:1px solid var(--line-hover);border-radius:19px;background:linear-gradient(145deg,rgba(64,44,91,.39),rgba(22,18,41,.77));}
+.conversation-mode-intro h3 {margin:5px 0 9px;font-size:clamp(19px,2.2vw,24px);}
+.conversation-mode-intro>p:last-child {margin:0 0 16px;color:var(--muted);font-size:14px;}
+.conversation-mode-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;}
+.conversation-mode-grid>div {padding:17px;border:1px solid var(--line);border-radius:13px;background:rgba(17,13,34,.47);}
+.conversation-mode-grid .mode-label {display:block;margin-bottom:6px;font-size:10px;font-weight:850;color:var(--pink);letter-spacing:.1em;}
+.conversation-mode-grid strong {display:block;font-size:15px;color:#fff0ff;}
+.conversation-mode-grid p {margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.8;}
+.conversation-mode-note {margin:15px 0 0;color:var(--subtle);font-size:12px;}
 .steps-grid {display: grid;grid-template-columns: repeat(4,minmax(0,1fr));gap: 17px;}
 .step {padding: 22px 13px 0 0;border-top: 2px solid rgba(194,166,246,.48);}
 .step strong {font-size: 11px;letter-spacing: .12em;color: var(--pink);}
@@ -411,7 +421,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 }
 @media (max-width:740px) {
   .hero::before {background: linear-gradient(90deg,rgba(13,10,29,.93),rgba(13,10,29,.57)),linear-gradient(0deg,rgba(16,13,30,.98),transparent 55%);}
-  .trust-grid,.tips-grid,.trouble-grid,.audience-grid,.symptom-links,.admin-checklist,.safety-check ul,.prompt-parts,.legal-primer-grid {grid-template-columns: 1fr;}
+  .trust-grid,.tips-grid,.trouble-grid,.audience-grid,.symptom-links,.admin-checklist,.safety-check ul,.prompt-parts,.legal-primer-grid,.conversation-mode-grid {grid-template-columns: 1fr;}
   .mobile-links {max-height: 70vh;}
   .update-entry {grid-template-columns:1fr;gap:5px;}
   .update-meta {padding:0;flex-direction:row;align-items:center;flex-wrap:wrap;}
@@ -454,7 +464,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   .feature-index a {font-size:13px;}
   .admin-checklist li,.safety-check li {font-size:14px;}
   .safety-check,.prompt-pattern,.legal-primer {padding:19px;}
-  .audience-guide,.conversation-guide,.report-guide {padding:19px;}
+  .audience-guide,.conversation-guide,.report-guide,.conversation-mode-guide {padding:19px;}
   .audience-card {padding:18px;}
   .audience-card ol,.conversation-head p,.symptom-guide > p {font-size:15px;}
   .conversation-grid li {padding:15px;}
@@ -513,8 +523,8 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
  .feature-index {display:none!important;}
  .hero-quicklinks,.question-studio {display:none!important;}
  .updates-timeline {border-color:#ccc!important;}
- .update-body,.updates-disclaimer,.chat-preview,.demo-scene,.demo-scene-content,.chat-line {background:#fff!important;color:#111!important;border-color:#ccc!important;box-shadow:none!important;}
- .update-body p,.update-body h3,.update-date,.update-status,.chat-line p,.chat-speaker,.demo-scene-title,.demo-scene-title small,.chat-preview-head p,.chat-preview-note {color:#222!important;}
+ .update-body,.updates-disclaimer,.chat-preview,.demo-scene,.demo-scene-content,.chat-line,.conversation-mode-guide,.conversation-mode-grid>div {background:#fff!important;color:#111!important;border-color:#ccc!important;box-shadow:none!important;}
+ .update-body p,.update-body h3,.update-date,.update-status,.chat-line p,.chat-speaker,.demo-scene-title,.demo-scene-title small,.chat-preview-head p,.chat-preview-note,.conversation-mode-guide h3,.conversation-mode-grid strong,.conversation-mode-guide p {color:#222!important;}
  .demo-scene,.update-entry {break-inside:avoid;}
  .feature-limit,.feature-use,.example-refine,.system-action,.safety-check,.prompt-pattern,.legal-primer,.faq-extra {background:#fff!important;color:#222!important;border-color:#ccc!important;}
  .audience-guide,.audience-card,.conversation-guide,.conversation-grid li,.symptom-guide,.symptom-links a,.report-guide {background:#fff!important;color:#111!important;box-shadow:none!important;border-color:#ccc!important;}
@@ -572,7 +582,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 <section id="features" aria-labelledby="features-title"><div class="wrap">
   <div class="section-head"><p class="section-kicker">FEATURES</p><h2 id="features-title">できることと、利用時の注意。</h2><p class="section-intro">6つの機能を「何ができるか」「どう使うか」「どこに注意するか」に分けて紹介します。どの機能も、サーバー設定や外部サービスの状況によって利用可否が変わります。</p></div>
   <nav class="feature-index" aria-label="機能紹介の目次">
-    <span>知りたい機能へ移動</span><a href="#feature-chat">AIチャット</a><a href="#feature-search">Web検索と出典</a><a href="#feature-context">会話履歴の活用</a><a href="#feature-memory">AIメモリ</a><a href="#feature-files">画像・ファイルの理解</a><a href="#feature-other">ニュース・音声関連</a>
+    <span>知りたい機能へ移動</span><a href="#feature-chat">AIチャット</a><a href="#feature-search">Web検索と出典</a><a href="#feature-context">会話履歴の活用</a><a href="#feature-memory">AIメモリ</a><a href="#feature-files">画像・ファイル・創作</a><a href="#feature-other">ニュース・音声関連</a>
   </nav>
   <div class="features-grid"><article class="panel feature-card" id="feature-chat"><span class="feature-num">01 / 会話・相談</span><h3>AIチャット</h3>
     <p>質問への説明、雑談、文章の下書き、考えの整理をDiscordの会話の中で依頼できます。答えの長さ、説明の難しさ、箇条書きなどの形式を希望として伝えられます。サーバー設定に応じて、通常のチャンネルやフォーラム投稿での会話に対応します。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>専門用語を使わずに仕組みを説明してもらう</li><li>お知らせ文を読みやすい文章に整える</li><li>いくつかの案を比較し、検討材料を整理する</li></ul>
@@ -590,15 +600,23 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
     <p>会話を助けるため、あらかじめ登録された情報を、利用が許可された範囲で参照する機構です。直近の会話履歴とは用途が異なり、サーバー共有情報と個人に関わる情報は同じ扱いではありません。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>登録されたサーバー案内を参照する</li><li>必要な前提情報を会話で活用する</li><li>対応する管理機能から許可された情報を確認する</li></ul>
     <p class="feature-use"><strong>質問例</strong> 「このサーバーで共有されている案内をもとに説明して」</p>
     <p class="feature-limit"><strong>利用上の注意</strong> 参照・編集の可否は権限や設定次第です。登録されていない情報を自動的に知っているわけではありません。</p></article>
-<article class="panel feature-card" id="feature-files"><span class="feature-num">05 / 添付資料</span><h3>画像・ファイルの理解</h3>
-    <p>画像や資料を扱う機構が利用できる場合、見えている内容を説明したり、資料の要点を整理したりする相談ができます。画像を読み取ることと、新しい画像を生成することは異なる機能です。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>画像の内容について質問する</li><li>説明資料の要点を整理する</li><li>資料の文章を分かりやすく言い換える</li></ul>
+<article class="panel feature-card" id="feature-files"><span class="feature-num">05 / 添付資料</span><h3>画像・ファイル・創作</h3>
+    <p>画像や資料の内容を読み取って説明・整理できる場合があります。また、画像作成が利用できるサーバーでは、作りたいイラストやイメージを言葉で伝えて依頼できます。読み取りと生成では利用条件が異なります。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>画像の内容について質問する</li><li>説明資料の要点を整理する</li><li>資料の文章を分かりやすく言い換える</li><li>対応している場合、イラストの作成を依頼する</li></ul>
     <p class="feature-use"><strong>質問例</strong> 「この資料の要点と、確認が必要な箇所を分けて教えて」</p>
-    <p class="feature-limit"><strong>利用上の注意</strong> 利用可能なファイル形式・容量・解析範囲は環境によって異なります。内容を正確に読み取れない場合もあります。</p></article>
+    <p class="feature-limit"><strong>利用上の注意</strong> 対応ファイル形式・容量・画像作成の可否はサーバーや利用状況で異なります。読み取りや生成の結果が希望どおりになるとは限りません。</p></article>
 <article class="panel feature-card" id="feature-other"><span class="feature-num">06 / サーバー補助</span><h3>ニュース・音声関連</h3>
     <p>ニュースに関する情報提供や、音声認識・読み上げに関連する機構も開発されています。使える操作や対象チャンネルは、サーバーの設定と現在の提供状況によって変わります。</p><h4 class="feature-subhead">主な利用場面</h4><ul><li>ニュースの概要や背景について質問する</li><li>対応する音声機能の利用条件を確認する</li><li>サーバーで使える補助機能の案内を確認する</li></ul>
     <p class="feature-use"><strong>質問例</strong> 「このニュースの要点と、分からない部分を分けて説明して」</p>
     <p class="feature-limit"><strong>利用上の注意</strong> 音声機能が常時利用できることや、ニュース情報が常に最新であることは保証されません。</p></article>
   </div>
+<aside class="conversation-mode-guide" aria-labelledby="conversation-modes-title">
+<div class="conversation-mode-intro"><p class="section-kicker">CHOOSING HOW TO ASK</p><h3 id="conversation-modes-title">いつもの会話も、じっくり考えたい相談も。</h3><p>普段はちるたいむにそのまま話しかければ大丈夫。複雑な内容をさらに丁寧に検討してほしい場合は、利用可能なサーバーでHighを選べます。</p></div>
+<div class="conversation-mode-grid">
+<div><span class="mode-label">NORMAL</span><strong>いつもの会話</strong><p>質問・雑談・調べもの・文章づくりを、いつもの呼びかけで。</p></div>
+<div><span class="mode-label">HIGH</span><strong>時間をかけて考えてほしいとき</strong><p>モードオプションでHighを選ぶか、「ちるたいむH、」と話しかけます。</p></div>
+</div>
+<p class="conversation-mode-note">Highの提供状況、応答時間、利用できる機能はサーバー設定などで異なります。回答の正確性を保証するものではありません。</p>
+</aside>
   <p class="section-note">紹介は一般向けの機能概要です。実際の提供状況、操作、利用できる場所はサーバーの案内をご確認ください。すべての機能の常時稼働を保証するものではありません。</p>
 </div></section>
 
@@ -765,7 +783,15 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 <details class="faq-item"><summary>どのような質問ができますか？</summary><p>説明、相談、文章作成、アイデア出し、情報整理などを依頼できます。具体的な条件や希望する答え方を添えると、回答を調整しやすくなります。</p><p class="faq-extra"><strong>確認のポイント：</strong>「何を知りたいか」に加え、対象者、文字数、希望する形式を指定すると、回答を調整してもらいやすくなります。</p><p class="faq-related"><span>関連する案内</span><a href="#examples">具体的なメッセージ例 →</a></p></details>
 <details class="faq-item"><summary>AIの回答はいつでも正確ですか？</summary><p>いいえ。誤り、古い情報、誤解が含まれる場合があります。重大な決定や専門的な問題については、公式資料や専門家で確認してください。</p><p class="faq-extra"><strong>確認のポイント：</strong>特に日時、価格、制度、製品仕様など変化する情報は、最新の公式情報で確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#trust">安全に利用するための注意 →</a></p></details>
 <details class="faq-item"><summary>Web検索と出典表示は必ず行われますか？</summary><p>必ずではありません。質問内容、外部サービスの状態、利用できる機能によって変わります。出典がない場合は根拠が確認済みだと判断しないでください。</p><p class="faq-extra"><strong>確認のポイント：</strong>出典が表示されても、リンク先の文章が回答内容を裏付けているかは利用者が確かめる必要があります。</p><p class="faq-related"><span>関連する案内</span><a href="#system">検索と会話情報の仕組み →</a></p></details>
-<details class="faq-item"><summary>画像や資料を送って質問できますか？</summary><p>画像・ファイルを扱う機構があります。ただし対応する形式、サイズ、機能、処理方法は利用環境により異なります。送れない場合は管理者に設定を確認してください。</p><p class="faq-extra"><strong>確認のポイント：</strong>画像や資料の読み取りと、新しい画像を生成する機能は別です。対応形式や現在使える機能はサーバーの案内に従ってください。</p><p class="faq-related"><span>関連する案内</span><a href="#features">主な機能の説明 →</a></p></details></div>
+<details class="faq-item"><summary>画像や資料を送って質問できますか？</summary><p>画像・ファイルを扱う機構があります。ただし対応する形式、サイズ、機能、処理方法は利用環境により異なります。送れない場合は管理者に設定を確認してください。</p><p class="faq-extra"><strong>確認のポイント：</strong>画像や資料の読み取りと、新しい画像を生成する機能は別です。対応形式や現在使える機能はサーバーの案内に従ってください。</p><p class="faq-related"><span>関連する案内</span><a href="#features">主な機能の説明 →</a></p></details>
+<details class="faq-item"><summary>もっと詳しく検討してほしいときは？</summary>
+<p>普段はいつもの呼びかけで利用できます。対応するサーバーでは、モードオプションでHighを選ぶか「ちるたいむH、」と呼びかけることで、より丁寧な検討を依頼できます。</p>
+<p class="faq-extra"><strong>確認のポイント：</strong>利用できるモードはサーバー設定などで異なります。Highでもすべての回答が正確になるわけではありません。</p>
+<p class="faq-related"><span>関連する案内</span><a href="#conversation-modes-title">会話方法の紹介 →</a></p></details>
+<details class="faq-item"><summary>イラストや画像を作ってもらえますか？</summary>
+<p>画像作成が利用できるサーバーでは、普段の呼びかけで「こんなイラストを作って」と依頼できます。対応機能や利用条件はサーバーの設定・運営状況によって異なります。</p>
+<p class="faq-extra"><strong>確認のポイント：</strong>画像を読み取ることと、新しい画像を作成することは別の機能です。利用できないときはサーバーの案内をご確認ください。</p>
+<p class="faq-related"><span>関連する案内</span><a href="#feature-files">画像・ファイル・創作の紹介 →</a></p></details></div>
 <div class="faq-category-group"><h3 class="faq-category" id="faq-memory"><span>02</span>会話履歴・メモリ・情報の取り扱い</h3><details class="faq-item"><summary>前の会話を覚えていますか？</summary><p>直近の会話を参照するための仕組みがありますが、参照できる期間や範囲には制約があります。重要な前提は必要に応じてもう一度伝えてください。</p><p class="faq-extra"><strong>確認のポイント：</strong>前の内容が伝わらない場合は「比較したい2案はこれです」のように必要な前提を再入力してください。</p><p class="faq-related"><span>関連する案内</span><a href="#system">会話履歴とメモリの仕組み →</a></p></details>
 <details class="faq-item"><summary>AIメモリと会話履歴は何が違いますか？</summary><p>会話履歴は最近のやり取りを踏まえるための情報、AIメモリは利用が許可された登録情報を参照するための仕組みです。保存・参照できる内容は設定や権限によって異なります。</p><p class="faq-extra"><strong>確認のポイント：</strong>会話が続いているからといって、その内容が自動的に長期間のメモリに登録されたと判断しないでください。</p><p class="faq-related"><span>関連する案内</span><a href="#system">情報の使い分け →</a></p></details>
 <details class="faq-item"><summary>別のサーバーの情報を参照できますか？</summary><p>AIメモリはサーバーや利用者等の範囲を区別する設計です。別のサーバーや他人の非公開情報が自由に参照できる機能として案内しているものではありません。</p><p class="faq-extra"><strong>確認のポイント：</strong>他サーバーや別ユーザーの非公開情報にアクセスできると想定せず、共有が許されている範囲を管理者に確認してください。</p><p class="faq-related"><span>関連する案内</span><a href="#trust">安全性とアクセス範囲 →</a></p></details>
