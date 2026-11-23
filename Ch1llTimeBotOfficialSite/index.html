@@ -178,6 +178,17 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 .question-studio {margin:0 0 30px;padding:26px;border:1px solid var(--line-hover);border-radius:21px;background:radial-gradient(ellipse at 98% 0,rgba(202,134,222,.14),transparent 55%),linear-gradient(145deg,rgba(53,38,82,.83),rgba(23,18,39,.95));}
 .studio-heading h3 {font-size:clamp(20px,2.4vw,25px);margin:6px 0 9px;line-height:1.5;}
 .studio-heading > p:last-child {font-size:14px;color:var(--muted);margin:0 0 21px;}
+
+.studio-preset-group {padding:0;margin:0 0 22px;border:0;min-width:0;}
+.studio-preset-group legend {font-size:14px;font-weight:850;color:#f7edff;margin:0 0 11px;}
+.studio-presets {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.studio-preset {display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;min-height:83px;width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(16,12,34,.5);text-align:left;color:#f5eaff;cursor:pointer;transition:background .18s,border-color .18s;}
+.studio-preset:hover {background:rgba(93,63,131,.3);border-color:var(--line-hover);}
+.studio-preset[aria-pressed="true"] {border-color:var(--pink);background:rgba(167,126,228,.17);}
+.studio-preset strong {font-size:14px;line-height:1.5;}
+.studio-preset span {font-size:11px;line-height:1.65;color:var(--muted);}
+.studio-preset-note,.studio-input-hint {display:block;color:var(--muted);font-size:12px;line-height:1.7;}
+.studio-preset-note {margin:10px 0 0;}
 .studio-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;}
 .studio-field {display:flex;flex-direction:column;gap:7px;min-width:0;}
 .studio-field label {color:#f7ecff;font-size:13px;font-weight:800;}
@@ -462,6 +473,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   .example-action {flex-direction: column;align-items: stretch;}
   .question-studio {padding:19px 15px;}
   .studio-grid {grid-template-columns:1fr;gap:13px;}
+  .studio-presets {grid-template-columns:repeat(2,minmax(0,1fr));}
   .studio-preview {padding:14px;}
   .studio-preview .copy-button {align-self:flex-end;}
   .copy-button {min-height: 44px;max-width: none;align-self: flex-end;}
@@ -476,7 +488,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
 }
 @media (prefers-contrast: more) {
   :root {--muted:#f0e8fc;--subtle:#e9dff7;--line:rgba(246,230,255,.54);--line-hover:rgba(255,244,255,.85);}
-  .panel,.brand-story,.legal-card,.faq-search {border-width:2px;}
+  .panel,.brand-story,.legal-card,.faq-search,.studio-preset {border-width:2px;}
   .faq-suggestions button,.guide-nav a,.faq-tabs a,.legal-index a {border-color:var(--line-hover);}
   .button.secondary,.mobile-nav summary {background:#2e2048;border-color:#fff;}
 }
@@ -485,7 +497,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   .panel,.button {transition: none;}
   .panel:hover,.button:hover {transform: none;}
   .hero-content {animation:none;}
-  .demo-scene-arrow {transition:none;}
+  .demo-scene-arrow,.studio-preset {transition:none;}
 }
 @page {size:A4;margin:14mm;}
 
@@ -623,12 +635,15 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   <div class="studio-heading">
     <p class="section-kicker">BUILD YOUR QUESTION · OFFLINE</p>
     <h3 id="studio-title">伝わる質問を、かんたんに組み立てよう。</h3>
-    <p>聞きたい内容、条件、回答形式を選ぶだけ。質問文の下書きをサイト内で作れます。実際のAIに送信する機能ではありません。</p>
+    <p>最初は用途別の例から選び、必要な部分だけ変えてみましょう。テーマや条件を自由に書くこともできます。サイトからAIへの送信は行いません。</p>
   </div>
   <form class="question-studio-form" hidden>
+    <fieldset class="studio-preset-group"><legend>まずは目的を選ぶ</legend>
+    <div class="studio-presets"><button type="button" class="studio-preset" data-studio-preset="community" aria-pressed="true"><strong>交流企画</strong><span>人数や時間に合った案を考える</span></button><button type="button" class="studio-preset" data-studio-preset="research" aria-pressed="false"><strong>調べもの</strong><span>公開情報を分かりやすく整理</span></button><button type="button" class="studio-preset" data-studio-preset="writing" aria-pressed="false"><strong>文章づくり</strong><span>お知らせや案内文を作る</span></button><button type="button" class="studio-preset" data-studio-preset="learning" aria-pressed="false"><strong>学び・説明</strong><span>難しい言葉をやさしく説明</span></button></div>
+    <p class="studio-preset-note">選んだ例は下の入力欄に反映され、いつでも変更できます。</p></fieldset>
     <div class="studio-grid">
       <div class="studio-field"><label for="studio-topic">聞きたいテーマ <span class="studio-required">必須</span></label>
-        <input id="studio-topic" type="text" autocomplete="off" maxlength="100" required value="Discordでの交流イベント" placeholder="例：イベントの企画"></div>
+        <input id="studio-topic" type="text" autocomplete="off" maxlength="100" required aria-describedby="studio-topic-help" value="Discordでの交流イベント" placeholder="例：イベントの企画"><small class="studio-input-hint" id="studio-topic-help">公開してもよい内容を入力してください。</small></div>
       <div class="studio-field"><label for="studio-purpose">何をしてほしい？</label>
         <select id="studio-purpose"><option value="explain">わかりやすく説明</option><option value="research">情報を整理</option><option value="ideas" selected>アイデアを考える</option><option value="draft">文章を作る</option></select></div>
       <div class="studio-field"><label for="studio-conditions">条件があれば <span class="studio-optional">任意</span></label>
@@ -994,8 +1009,7 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
   });
 
 
-  // Offline question builder: edit only text nodes, never submit user input.
-  // The generated example shares the same clipboard handler as the eight static examples.
+  // Offline question builder. Presets and free text use the same rendering function.
   const studioForm = document.querySelector(".question-studio-form");
   if (studioForm) {
     const topic = document.getElementById("studio-topic");
@@ -1006,6 +1020,13 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
     const sample = document.getElementById("studio-output");
     const copyButton = studioForm.querySelector(".copy-button");
     const feedback = document.getElementById("studio-feedback");
+    const presetButtons = [...studioForm.querySelectorAll("[data-studio-preset]")];
+    const presets = {
+      community:{topic:"Discordでの交流イベント",purpose:"ideas",conditions:"初心者6人、30分以内",format:"bullets",verify:false},
+      research:{topic:"最近のAIに関する公開情報",purpose:"research",conditions:"情報の発信元と公開時期を区別",format:"short",verify:true},
+      writing:{topic:"Discordの交流会のお知らせ",purpose:"draft",conditions:"初参加の人にも分かるように",format:"bullets",verify:false},
+      learning:{topic:"生成AIと機械学習の違い",purpose:"explain",conditions:"専門用語を避けて初心者向けに",format:"steps",verify:false}
+    };
     const purposeTemplates = {
       explain: (subject) => subject + "について初心者にも分かるように説明して",
       research: (subject) => subject + "について確認できる情報を整理して",
@@ -1020,6 +1041,15 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
     };
     const renderStudio = () => {
       latestCopyAttempt++;
+      if (copyStatus) copyStatus.textContent = "";
+      presetButtons.forEach((button) => {
+        const selected = presets[button.dataset.studioPreset];
+        const active = selected && topic.value.trim() === selected.topic
+          && purpose.value === selected.purpose
+          && conditions.value.trim() === selected.conditions
+          && format.value === selected.format && verify.checked === selected.verify;
+        button.setAttribute("aria-pressed",active ? "true" : "false");
+      });
       const subject = topic.value.trim();
       if (!subject) {
         sample.textContent = "聞きたいテーマを入力すると、ここに質問文が表示されます。";
@@ -1043,6 +1073,18 @@ h2 {margin: 0;font-size: clamp(28px,3.8vw,42px);line-height: 1.4;font-weight: 85
     studioForm.addEventListener("input", renderStudio);
     studioForm.addEventListener("change", renderStudio);
     studioForm.addEventListener("reset", () => window.requestAnimationFrame(renderStudio));
+    presetButtons.forEach((button) => button.addEventListener("click", () => {
+      const entry = presets[button.dataset.studioPreset];
+      if (!entry) return;
+      topic.value = entry.topic;
+      purpose.value = entry.purpose;
+      conditions.value = entry.conditions;
+      format.value = entry.format;
+      verify.checked = entry.verify;
+      renderStudio();
+      feedback.textContent = button.querySelector("strong").textContent
+        + "の例を読み込みました。下の内容を編集できます。";
+    }));
     studioForm.hidden = false;
     renderStudio();
   }
